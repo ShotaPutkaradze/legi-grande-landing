@@ -80,15 +80,15 @@ export default function Hero() {
           <div className="relative animate-fadeUp [animation-delay:120ms]">
             <div className="relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden shadow-lift ring-1 ring-stone-200">
               <Image
-                src="/grande-cappuccino-obsidian-paving.webp"
-                alt="Grande Cappuccino და Obsidian ფერის მსხვილფორმატიანი ბეტონის ფილა გარე სივრცეში"
+                src="/grande-pavers-gray-cappuccino-obsidian.webp"
+                alt="Grande მსხვილფორმატიანი ბეტონის ფილა სამ ფერში — Gray, Cappuccino და Obsidian — გაზონზე"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur px-3 py-2 text-xs font-semibold text-white">
-                Grande · Cappuccino + Obsidian
+                Grande · Gray · Cappuccino · Obsidian
               </div>
             </div>
             {/* floating chip */}
