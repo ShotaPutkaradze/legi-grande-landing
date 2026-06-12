@@ -65,7 +65,7 @@ export default function Footer() {
           <span>
             © {new Date().getFullYear()} LEGI. {t.footer.rights}
           </span>
-          <span className="text-stone-400">Grande · Premium concrete pavers</span>
+          <span className="text-stone-400">{t.footer.productLine}</span>
         </div>
       </div>
     </footer>

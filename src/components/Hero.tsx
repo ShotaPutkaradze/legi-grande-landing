@@ -58,13 +58,23 @@ export default function Hero() {
                 className="object-cover"
               />
               <div className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur px-3 py-2 text-xs font-semibold text-white">
-                Grande · Gray · Karva · Obsidian
+                {t.hero.photoCaption}
               </div>
             </div>
+
+            {/* Mobile price CTA — at the bottom of the hero shot */}
+            <a
+              href="#pricing"
+              className="md:hidden mt-3 flex w-full items-center justify-center gap-2 bg-red px-6 py-3.5 text-base font-bold uppercase tracking-wide text-white shadow-lift hover:bg-red-dark transition-colors"
+            >
+              <IconTag className="h-4 w-4" />
+              {t.hero.ctaPrice}
+            </a>
+
             {/* floating chip */}
             <div className="absolute -top-4 -right-2 sm:-right-4 rotate-3 bg-red px-4 py-3 shadow-lift">
               <div className="text-[0.65rem] font-semibold uppercase tracking-wider text-white/80">EN 1338</div>
-              <div className="text-sm font-bold text-white">Certified</div>
+              <div className="text-sm font-bold text-white">{t.hero.certified}</div>
             </div>
           </div>
 
@@ -84,7 +94,7 @@ export default function Hero() {
               </a>
               <a
                 href="#pricing"
-                className="inline-flex items-center gap-2 border border-stone-300 px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-bold uppercase tracking-wide text-ink hover:border-ink hover:bg-stone-50 transition-colors"
+                className="hidden md:inline-flex items-center gap-2 border border-stone-300 px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-bold uppercase tracking-wide text-ink hover:border-ink hover:bg-stone-50 transition-colors"
               >
                 <IconTag className="h-4 w-4 text-red" />
                 {t.hero.ctaSecondary}

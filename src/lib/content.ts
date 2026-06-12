@@ -15,12 +15,15 @@ export const content = {
       cta: "შეკვეთა",
     },
     hero: {
-      badge: "ახალი კოლექცია · LEGI",
+      badge: "ახალი კოლექცია",
       title: "GRANDE",
       subtitle: "მსხვილფორმატიანი ბეტონის ფილა",
       lead: "დიდი ფორმატის ტროტუარის ფილა, რომელიც აერთიანებს ევროპულ დიზაინსა და ქართულ ამინდზე გათვლილ სიმტკიცეს. სუფთა გეომეტრია, მინიმალური ნაკერი, თანამედროვე სივრცე.",
       ctaPrimary: "მიიღე ფასი",
       ctaSecondary: "ფასების ნახვა",
+      ctaPrice: "გაიგე ფასი",
+      photoCaption: "Grande · ნაცრისფერი · ყავისფერი · ობსიდიანი",
+      certified: "სერტიფიცირებული",
       stats: [
         { value: "15+", label: "წლიანი გამოცდილება" },
         { value: "8 სმ", label: "სისქე / გამძლეობა" },
@@ -66,7 +69,7 @@ export const content = {
     gallery: {
       eyebrow: "გალერეა",
       title: "Grande ობიექტებზე",
-      text: "რეალური ობიექტები Grande ფილით — Gray, Karva და Obsidian ფერებში.",
+      text: "რეალური ობიექტები Grande ფილით — ნაცრისფერ, ყავისფერ და ობსიდიან ფერებში.",
     },
     pricing: {
       eyebrow: "ფასები",
@@ -77,9 +80,9 @@ export const content = {
       cta: "შეუკვეთე",
       columns: { product: "ფერი / დეკორი", size: "ზომა", thickness: "სისქე", price: "ფასი" },
       rows: [
-        { name: "Grande — Gray", size: "80×40 სმ", thickness: "8 სმ", price: "14", popular: false },
-        { name: "Grande — Karva", size: "80×40 სმ", thickness: "8 სმ", price: "24", popular: true },
-        { name: "Grande — Obsidian", size: "80×40 სმ", thickness: "8 სმ", price: "24", popular: false },
+        { name: "Grande — ნაცრისფერი", size: "80×40 სმ", thickness: "8 სმ", price: "14", popular: false, swatch: "#b4b1a8" },
+        { name: "Grande — ყავისფერი", size: "80×40 სმ", thickness: "8 სმ", price: "24", popular: true, swatch: "#977258" },
+        { name: "Grande — ობსიდიანი", size: "80×40 სმ", thickness: "8 სმ", price: "24", popular: false, swatch: "#3f3f42" },
       ],
     },
     form: {
@@ -105,6 +108,7 @@ export const content = {
       locationList: ["თბილისი", "ქობულეთი", "თერჯოლა"],
       follow: "გამოგვყევი",
       rights: "ყველა უფლება დაცულია.",
+      productLine: "Grande · პრემიუმ ბეტონის ფილა",
     },
   },
 
@@ -125,6 +129,9 @@ export const content = {
       lead: "A large-format paving slab that combines European design with strength engineered for the Georgian climate. Clean geometry, minimal joints, a modern surface.",
       ctaPrimary: "Get a price",
       ctaSecondary: "See prices",
+      ctaPrice: "Learn price",
+      photoCaption: "Grande · Gray · Karva · Obsidian",
+      certified: "Certified",
       stats: [
         { value: "15+", label: "years of experience" },
         { value: "8 cm", label: "thickness / durability" },
@@ -181,9 +188,9 @@ export const content = {
       cta: "Order",
       columns: { product: "Colour / decor", size: "Size", thickness: "Thickness", price: "Price" },
       rows: [
-        { name: "Grande — Gray", size: "80×40 cm", thickness: "8 cm", price: "14", popular: false },
-        { name: "Grande — Karva", size: "80×40 cm", thickness: "8 cm", price: "24", popular: true },
-        { name: "Grande — Obsidian", size: "80×40 cm", thickness: "8 cm", price: "24", popular: false },
+        { name: "Grande — Gray", size: "80×40 cm", thickness: "8 cm", price: "14", popular: false, swatch: "#b4b1a8" },
+        { name: "Grande — Karva", size: "80×40 cm", thickness: "8 cm", price: "24", popular: true, swatch: "#977258" },
+        { name: "Grande — Obsidian", size: "80×40 cm", thickness: "8 cm", price: "24", popular: false, swatch: "#3f3f42" },
       ],
     },
     form: {
@@ -209,6 +216,7 @@ export const content = {
       locationList: ["Tbilisi", "Kobuleti", "Terjola"],
       follow: "Follow us",
       rights: "All rights reserved.",
+      productLine: "Grande · Premium concrete pavers",
     },
   },
 } as const;

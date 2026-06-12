@@ -36,7 +36,7 @@ export default function Pricing() {
  <div className="flex items-center gap-3">
  <span
  className="h-7 w-7 ring-1 ring-stone-300"
- style={{ backgroundColor: swatch(r.name) }}
+ style={{ backgroundColor: r.swatch }}
  />
  <span className="font-semibold text-ink">{r.name}</span>
  {r.popular && (
@@ -79,7 +79,7 @@ export default function Pricing() {
  <div className="flex items-center gap-3">
  <span
  className="h-8 w-8 ring-1 ring-stone-300"
- style={{ backgroundColor: swatch(r.name) }}
+ style={{ backgroundColor: r.swatch }}
  />
  <span className="font-bold text-ink">{r.name}</span>
  {r.popular && (
@@ -115,11 +115,4 @@ export default function Pricing() {
  </div>
  </section>
  );
-}
-
-function swatch(name: string): string {
- if (name.includes("Gray")) return "#b4b1a8";
- if (name.includes("Karva")) return "#977258";
- if (name.includes("Obsidian")) return "#3f3f42";
- return "#b4b1a8";
 }
