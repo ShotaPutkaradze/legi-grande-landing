@@ -108,7 +108,11 @@ export default function Pricing() {
  ))}
  </div>
 
- <p className="mt-6 flex items-start gap-2 text-sm text-stone-500">
+ <p className="mt-6 flex items-start gap-2 text-sm font-semibold text-ink">
+ <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-red" />
+ {p.minOrder}
+ </p>
+ <p className="mt-2 flex items-start gap-2 text-sm text-stone-500">
  <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-red" />
  {p.note}
  </p>
