@@ -76,7 +76,7 @@ export default function LeadForm() {
             ) : (
               <form onSubmit={onSubmit} className="grid gap-4">
                 <Field label={f.name} name="name" required autoComplete="name" />
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4 items-end">
                   <Field
                     label={f.phone}
                     name="phone"
