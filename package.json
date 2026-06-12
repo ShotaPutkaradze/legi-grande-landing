@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "opennextjs-cloudflare build",
     "build:next": "next build",
+    "postinstall": "node scripts/cf-postinstall.mjs",
     "start": "next start",
     "lint": "eslint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
