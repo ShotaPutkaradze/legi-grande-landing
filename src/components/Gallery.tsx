@@ -41,6 +41,12 @@ const shots: Shot[] = [
     label: { ka: "დეტალი · ყავისფერი + ობსიდიანი", en: "Detail · Karva + Obsidian" },
   },
   {
+    src: "/gallery/grande-obsidian-stepping-stones-path.webp",
+    alt: { ka: "Grande ობსიდიანი ფილა ბაღის ბილიკად — ხედი ზემოდან", en: "Grande Obsidian slabs as a garden path — aerial view" },
+    label: { ka: "ბილიკი · ობსიდიანი", en: "Pathway · Obsidian" },
+    tall: true,
+  },
+  {
     src: "/gallery/grande-gray-paver-closeup.webp",
     alt: { ka: "Grande ნაცრისფერი ფილის ზედაპირი ახლოდან", en: "Grande Gray slab surface up close" },
     label: { ka: "ზედაპირი · ნაცრისფერი", en: "Surface · Gray" },
