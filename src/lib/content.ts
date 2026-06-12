@@ -1,7 +1,7 @@
 export type Lang = "ka" | "en";
 
-export const PHONE = "+995 577 93 55 99";
-export const PHONE_HREF = "+995577935599";
+export const PHONE = "+995 577 10 16 10";
+export const PHONE_HREF = "+995577101610";
 
 export const content = {
   ka: {
