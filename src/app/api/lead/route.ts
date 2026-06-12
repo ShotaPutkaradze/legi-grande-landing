@@ -56,6 +56,11 @@ export async function POST(request: Request) {
     returnURL: "null",
     "Last Name": name,
     Mobile: phone,
+    // Tags the lead so it's filterable in Zoho. For this to populate, add
+    // "Grande Landing" as a Lead Source picklist option in the Leads module
+    // (Setup → Modules → Leads → Lead Source). Until then the lead still saves
+    // with a blank source — no harm.
+    "Lead Source": "Grande Landing",
     aG9uZXlwb3Q: "", // Zoho honeypot — must be empty
   });
 
