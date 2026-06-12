@@ -1,39 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Script from "next/script";
 import { useLang } from "@/lib/language";
 import { PHONE, PHONE_HREF } from "@/lib/content";
 import { IconArrow, IconCheck, IconPhone } from "./icons";
 
-type Status = "idle" | "submitting" | "success" | "error";
+/**
+ * Zoho CRM Web-to-Lead (EU data center).
+ * These values come from the webform generated in Zoho CRM
+ * (Setup → Developer Hub → Webforms, Leads module). The tokens are public by
+ * design — that's how Zoho's client-side web-to-lead forms work. To repoint
+ * leads at a different Zoho org/form, regenerate the webform and replace these.
+ */
+const ZOHO_ACTION = "https://crm.zoho.eu/crm/WebToLeadForm";
+const ZOHO_XNQSJSDP =
+  "c3c7f77d840ef21ae52ae9af28f4eb1031aa66635c59d7d29e85ddd6f432fdc6";
+const ZOHO_XMIWTLD =
+  "1667cfad86d6d9b22743cca0386d89863a8dccf8e28da7bc3cea422f2f142fdf7c0962843a4bde6c2b3fb9957ddf9f63";
+const ZOHO_ANALYTICS_SRC =
+  "https://crm.zohopublic.eu/crm/WebFormAnalyticsServeServlet?rid=969afe3143fe6cb63b9a5d33981feaa410d79c18112bf42a28e3c9e424511399bef0e3d6a9982dfb138f0dabee7def8dgid8cd49291aa3ecaee9dca5d2aa6b904cd1876338977e096824a84afa5f7004d99gid420cd10653c67bd2191a2b1dd6bd3a9a904aaa3da7b5c94be71c7310838c99b0gidf9de778f23301af61648dba69166a6e9152744bd5c6a74228797491c584e7989&tw=b1d9b0fce146473981790975ac464b82d9869d252fa6c483a7872d985fc1db1e";
+
+type Status = "idle" | "submitting" | "success";
 
 export default function LeadForm() {
   const { t, lang } = useLang();
   const f = t.form;
   const [status, setStatus] = useState<Status>("idle");
+  const submitted = useRef(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-
+  // Native POST goes straight to Zoho, targeting the hidden iframe so the page
+  // never navigates. We surface our own inline success once the iframe loads.
+  function handleSubmit() {
+    submitted.current = true;
     setStatus("submitting");
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, lang }),
-      });
-      if (!res.ok) throw new Error("request failed");
-      setStatus("success");
-      form.reset();
-    } catch {
-      setStatus("error");
-    }
+  }
+
+  function handleIframeLoad() {
+    if (!submitted.current) return; // ignore the initial about:blank load
+    submitted.current = false;
+    formRef.current?.reset();
+    setStatus("success");
   }
 
   return (
-    <section id="contact" className="bg-stone-50 text-ink py-14 sm:py-20 lg:py-28 border-t border-stone-200">
+    <section
+      id="contact"
+      className="bg-stone-50 text-ink py-14 sm:py-20 lg:py-28 border-t border-stone-200"
+    >
+      <Script id="zoho-wf-analytics" src={ZOHO_ANALYTICS_SRC} strategy="afterInteractive" />
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: pitch + contact */}
@@ -74,31 +90,44 @@ export default function LeadForm() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="grid gap-4">
-                <Field label={f.name} name="name" required autoComplete="name" />
-                <div className="grid sm:grid-cols-2 gap-4 items-end">
-                  <Field
-                    label={f.phone}
-                    name="phone"
-                    type="tel"
-                    required
-                    autoComplete="tel"
-                    placeholder="5XX XX XX XX"
-                  />
-                  <Field
-                    label={f.quantity}
-                    name="quantity"
-                    type="number"
-                    inputMode="numeric"
-                    min={1}
-                    placeholder="100"
-                  />
-                </div>
+              <form
+                ref={formRef}
+                action={ZOHO_ACTION}
+                method="POST"
+                target="zoho-lead-target"
+                acceptCharset="UTF-8"
+                onSubmit={handleSubmit}
+                className="grid gap-4"
+              >
+                {/* Zoho web-to-lead required hidden fields — do not remove. */}
+                <input type="hidden" name="xnQsjsdp" value={ZOHO_XNQSJSDP} readOnly />
+                <input type="hidden" name="xmIwtLD" value={ZOHO_XMIWTLD} readOnly />
+                <input type="hidden" name="actionType" value="TGVhZHM=" readOnly />
+                <input type="hidden" name="returnURL" value="null" readOnly />
+                <input type="hidden" name="zc_gad" value="" readOnly />
 
-                {/* honeypot */}
+                <Field
+                  label={f.name}
+                  name="Last Name"
+                  required
+                  maxLength={80}
+                  autoComplete="name"
+                />
+                <Field
+                  label={f.phone}
+                  name="Mobile"
+                  type="tel"
+                  required
+                  maxLength={30}
+                  autoComplete="tel"
+                  placeholder="5XX XX XX XX"
+                />
+
+                {/* Zoho honeypot — must stay empty. */}
                 <input
                   type="text"
-                  name="company"
+                  name="aG9uZXlwb3Q"
+                  defaultValue=""
                   tabIndex={-1}
                   autoComplete="off"
                   className="hidden"
@@ -116,15 +145,21 @@ export default function LeadForm() {
                   )}
                 </button>
 
-                {status === "error" && (
-                  <p className="text-sm font-medium text-red-600">{f.error}</p>
-                )}
                 <p className="text-xs text-stone-400">{f.privacy}</p>
               </form>
             )}
           </div>
         </div>
       </div>
+
+      {/* Hidden target: captures Zoho's response without navigating the page. */}
+      <iframe
+        name="zoho-lead-target"
+        title="Zoho lead submission"
+        onLoad={handleIframeLoad}
+        className="hidden"
+        aria-hidden="true"
+      />
     </section>
   );
 }
