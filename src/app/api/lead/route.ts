@@ -6,9 +6,7 @@ export const runtime = "nodejs";
 type LeadBody = {
   name?: string;
   phone?: string;
-  email?: string;
-  area?: string;
-  message?: string;
+  quantity?: string;
   lang?: string;
   company?: string; // honeypot
 };
@@ -38,9 +36,7 @@ export async function POST(request: Request) {
   const lead = {
     name,
     phone,
-    email: (body.email ?? "").trim() || "—",
-    area: (body.area ?? "").trim() || "—",
-    message: (body.message ?? "").trim() || "—",
+    quantity: (body.quantity ?? "").trim() || "—",
     lang: body.lang === "en" ? "EN" : "KA",
     receivedAt: new Date().toISOString(),
   };
@@ -60,7 +56,6 @@ export async function POST(request: Request) {
     const { error } = await resend.emails.send({
       from,
       to: to.split(",").map((s) => s.trim()),
-      replyTo: lead.email !== "—" ? lead.email : undefined,
       subject: `🧱 ახალი ლიდი — Grande: ${lead.name}`,
       text: buildText(lead),
       html: buildHtml(lead),
@@ -81,9 +76,7 @@ export async function POST(request: Request) {
 type Lead = {
   name: string;
   phone: string;
-  email: string;
-  area: string;
-  message: string;
+  quantity: string;
   lang: string;
   receivedAt: string;
 };
@@ -92,36 +85,32 @@ function buildText(l: Lead) {
   return [
     "ახალი ლიდი — Grande landing page",
     "----------------------------------",
-    `სახელი:    ${l.name}`,
-    `ტელეფონი:  ${l.phone}`,
-    `ელ.ფოსტა:  ${l.email}`,
-    `ფართობი:   ${l.area} მ²`,
-    `ენა:       ${l.lang}`,
-    `შეტყობინება: ${l.message}`,
+    `სახელი:      ${l.name}`,
+    `ტელეფონი:    ${l.phone}`,
+    `რაოდენობა:   ${l.quantity} ცალი`,
+    `ენა:         ${l.lang}`,
     `მიღების დრო: ${l.receivedAt}`,
   ].join("\n");
 }
 
 function buildHtml(l: Lead) {
   const row = (k: string, v: string) =>
-    `<tr><td style="padding:8px 14px;color:#7d6f60;font-size:13px;white-space:nowrap;border-bottom:1px solid #eee;">${k}</td><td style="padding:8px 14px;color:#161311;font-size:15px;font-weight:600;border-bottom:1px solid #eee;">${escapeHtml(
+    `<tr><td style="padding:8px 14px;color:#6a6565;font-size:13px;white-space:nowrap;border-bottom:1px solid #eee;">${k}</td><td style="padding:8px 14px;color:#211e1e;font-size:15px;font-weight:600;border-bottom:1px solid #eee;">${escapeHtml(
       v,
     )}</td></tr>`;
   return `
-  <div style="font-family:Arial,Helvetica,sans-serif;background:#faf8f5;padding:24px;">
-    <div style="max-width:520px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e6ded4;">
-      <div style="background:#161311;padding:20px 24px;">
+  <div style="font-family:Arial,Helvetica,sans-serif;background:#f6f5f5;padding:24px;">
+    <div style="max-width:520px;margin:0 auto;background:#fff;overflow:hidden;border:1px solid #e0dddd;">
+      <div style="background:#211e1e;padding:20px 24px;">
         <span style="color:#fff;font-size:20px;font-weight:800;">LEGI</span>
-        <span style="color:#d9772a;font-size:20px;font-weight:800;"> · Grande</span>
-        <div style="color:#ab9c8b;font-size:12px;margin-top:4px;">ახალი ლიდი ლენდინგ გვერდიდან</div>
+        <span style="color:#a71f27;font-size:20px;font-weight:800;"> · Grande</span>
+        <div style="color:#989393;font-size:12px;margin-top:4px;">ახალი ლიდი ლენდინგ გვერდიდან</div>
       </div>
       <table style="width:100%;border-collapse:collapse;">
         ${row("სახელი", l.name)}
         ${row("ტელეფონი", l.phone)}
-        ${row("ელ. ფოსტა", l.email)}
-        ${row("ფართობი (მ²)", l.area)}
+        ${row("რაოდენობა (ცალი)", l.quantity)}
         ${row("ენა", l.lang)}
-        ${row("შეტყობინება", l.message)}
         ${row("მიღების დრო", l.receivedAt)}
       </table>
     </div>

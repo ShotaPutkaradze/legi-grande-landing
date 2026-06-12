@@ -85,17 +85,13 @@ export default function LeadForm() {
                     autoComplete="tel"
                     placeholder="5XX XX XX XX"
                   />
-                  <Field label={f.area} name="area" type="number" inputMode="numeric" placeholder="50" />
-                </div>
-                <Field label={f.email} name="email" type="email" autoComplete="email" />
-                <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-stone-700">
-                    {f.message}
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={3}
-                    className="w-full border border-stone-300 bg-stone-50 px-4 py-3 text-sm outline-none transition-colors focus:border-red focus:bg-white focus:ring-2 focus:ring-red/20"
+                  <Field
+                    label={f.quantity}
+                    name="quantity"
+                    type="number"
+                    inputMode="numeric"
+                    min={1}
+                    placeholder="100"
                   />
                 </div>
 
