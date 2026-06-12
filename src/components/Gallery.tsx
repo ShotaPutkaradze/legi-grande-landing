@@ -58,7 +58,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <section id="gallery" className="bg-stone-50 py-14 sm:py-20 lg:py-28 border-t border-stone-200">
+    <section id="gallery" className="bg-white py-14 sm:py-20 lg:py-28 border-t border-stone-200">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow text-red">{t.gallery.eyebrow}</p>

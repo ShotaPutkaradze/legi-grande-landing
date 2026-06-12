@@ -8,7 +8,7 @@ export default function Pricing() {
  const p = t.pricing;
 
  return (
- <section id="pricing" className="bg-white py-14 sm:py-20 lg:py-28 border-y border-stone-200">
+ <section id="pricing" className="bg-stone-50 py-14 sm:py-20 lg:py-28 border-y border-stone-200">
  <div className="mx-auto max-w-6xl px-5 sm:px-8">
  <div className="max-w-2xl">
  <p className="eyebrow text-red">{p.eyebrow}</p>

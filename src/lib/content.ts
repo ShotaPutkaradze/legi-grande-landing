@@ -20,7 +20,7 @@ export const content = {
       subtitle: "მსხვილფორმატიანი ბეტონის ფილა",
       lead: "დიდი ფორმატის ტროტუარის ფილა, რომელიც აერთიანებს ევროპულ დიზაინსა და ქართულ ამინდზე გათვლილ სიმტკიცეს. სუფთა გეომეტრია, მინიმალური ნაკერი, თანამედროვე სივრცე.",
       ctaPrimary: "მიიღე ფასი",
-      ctaSecondary: "ნახე ვიდეო",
+      ctaSecondary: "ფასების ნახვა",
       stats: [
         { value: "15+", label: "წლიანი გამოცდილება" },
         { value: "8 სმ", label: "სისქე / გამძლეობა" },
@@ -124,7 +124,7 @@ export const content = {
       subtitle: "Large-format concrete paving slab",
       lead: "A large-format paving slab that combines European design with strength engineered for the Georgian climate. Clean geometry, minimal joints, a modern surface.",
       ctaPrimary: "Get a price",
-      ctaSecondary: "Watch video",
+      ctaSecondary: "See prices",
       stats: [
         { value: "15+", label: "years of experience" },
         { value: "8 cm", label: "thickness / durability" },
