@@ -43,7 +43,9 @@ export default function Hero() {
             <p className="mt-3 text-lg sm:text-2xl font-bold text-ink">
               {t.hero.subtitle}
             </p>
-            <p className="mt-1 brand-slant text-base text-red">{t.slogan}</p>
+            <p className="mt-2 max-w-md text-base sm:text-lg italic text-stone-500 leading-snug">
+              {t.hero.tagline}
+            </p>
           </div>
 
           {/* Product photo (mobile: 2nd, right under the title · desktop: full-height right column) */}
@@ -57,19 +59,20 @@ export default function Hero() {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
-              <div className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur px-3 py-2 text-xs font-semibold text-white">
+              {/* colour caption — desktop only (mobile shows the CTA here) */}
+              <div className="hidden md:block absolute bottom-4 left-4 bg-ink/80 backdrop-blur px-3 py-2 text-xs font-semibold text-white">
                 {t.hero.photoCaption}
               </div>
-            </div>
 
-            {/* Mobile price CTA — at the bottom of the hero shot */}
-            <a
-              href="#pricing"
-              className="md:hidden mt-3 flex w-full items-center justify-center gap-2 bg-red px-6 py-3.5 text-base font-bold uppercase tracking-wide text-white shadow-lift hover:bg-red-dark transition-colors"
-            >
-              <IconTag className="h-4 w-4" />
-              {t.hero.ctaPrice}
-            </a>
+              {/* Mobile price CTA — overlaps the bottom of the hero shot (no scroll needed) */}
+              <a
+                href="#pricing"
+                className="md:hidden absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 bg-red px-6 pt-4 pb-5 text-base font-bold uppercase tracking-wide text-white shadow-[0_-10px_30px_rgba(0,0,0,0.25)]"
+              >
+                <IconTag className="h-4 w-4" />
+                {t.hero.ctaPrice}
+              </a>
+            </div>
 
             {/* floating chip */}
             <div className="absolute -top-4 -right-2 sm:-right-4 rotate-3 bg-red px-4 py-3 shadow-lift">
