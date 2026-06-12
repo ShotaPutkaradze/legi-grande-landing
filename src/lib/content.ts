@@ -66,20 +66,20 @@ export const content = {
     gallery: {
       eyebrow: "გალერეა",
       title: "Grande ობიექტებზე",
-      text: "რეალური ობიექტები Grande ფილით — Gray, Cappuccino და Obsidian ფერებში.",
+      text: "რეალური ობიექტები Grande ფილით — Gray, Karva და Obsidian ფერებში.",
     },
     pricing: {
       eyebrow: "ფასები",
       title: "აირჩიე შენი ფერი",
-      note: "ფასები მითითებულია 1 მ²-ზე, დღგ-ს ჩათვლით. რაოდენობრივ შეკვეთაზე მოქმედებს ფასდაკლება.",
+      note: "ფასი მითითებულია 1 ცალ Grande-ზე, დღგ-ს ჩათვლით. რაოდენობრივ შეკვეთაზე მოქმედებს ფასდაკლება.",
       popular: "პოპულარული",
-      unit: "₾ / მ²",
+      unit: "₾ / ცალი",
       cta: "შეუკვეთე",
       columns: { product: "ფერი / დეკორი", size: "ზომა", thickness: "სისქე", price: "ფასი" },
       rows: [
-        { name: "Grande — Gray", size: "60×30 სმ", thickness: "8 სმ", price: "58", popular: false },
-        { name: "Grande — Cappuccino", size: "60×30 სმ", thickness: "8 სმ", price: "67", popular: true },
-        { name: "Grande — Obsidian", size: "60×30 სმ", thickness: "8 სმ", price: "69", popular: false },
+        { name: "Grande — Gray", size: "80×40 სმ", thickness: "8 სმ", price: "14", popular: false },
+        { name: "Grande — Karva", size: "80×40 სმ", thickness: "8 სმ", price: "24", popular: true },
+        { name: "Grande — Obsidian", size: "80×40 სმ", thickness: "8 სმ", price: "24", popular: false },
       ],
     },
     form: {
@@ -170,20 +170,20 @@ export const content = {
     gallery: {
       eyebrow: "Gallery",
       title: "Grande on site",
-      text: "Real installations with Grande slabs — in Gray, Cappuccino and Obsidian.",
+      text: "Real installations with Grande slabs — in Gray, Karva and Obsidian.",
     },
     pricing: {
       eyebrow: "Pricing",
       title: "Choose your colour",
-      note: "Prices are per 1 m², VAT included. Volume orders qualify for a discount.",
+      note: "Price is per single Grande slab, VAT included. Volume orders qualify for a discount.",
       popular: "Popular",
-      unit: "₾ / m²",
+      unit: "₾ / pc",
       cta: "Order",
       columns: { product: "Colour / decor", size: "Size", thickness: "Thickness", price: "Price" },
       rows: [
-        { name: "Grande — Gray", size: "60×30 cm", thickness: "8 cm", price: "58", popular: false },
-        { name: "Grande — Cappuccino", size: "60×30 cm", thickness: "8 cm", price: "67", popular: true },
-        { name: "Grande — Obsidian", size: "60×30 cm", thickness: "8 cm", price: "69", popular: false },
+        { name: "Grande — Gray", size: "80×40 cm", thickness: "8 cm", price: "14", popular: false },
+        { name: "Grande — Karva", size: "80×40 cm", thickness: "8 cm", price: "24", popular: true },
+        { name: "Grande — Obsidian", size: "80×40 cm", thickness: "8 cm", price: "24", popular: false },
       ],
     },
     form: {

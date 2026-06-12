@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_Georgian } from "next/font/google";
+import { Noto_Sans_Georgian, Oswald } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language";
 
@@ -7,6 +7,14 @@ const notoGeorgian = Noto_Sans_Georgian({
   variable: "--font-body",
   subsets: ["georgian", "latin"],
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+// Industrial display face for Latin headlines (e.g. the GRANDE wordmark).
+const oswald = Oswald({
+  variable: "--font-latin",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -54,7 +62,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ka" className={`${notoGeorgian.variable} h-full antialiased`}>
+    <html lang="ka" className={`${notoGeorgian.variable} ${oswald.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <LanguageProvider>{children}</LanguageProvider>
       </body>

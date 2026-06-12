@@ -8,7 +8,7 @@ export default function Pricing() {
  const p = t.pricing;
 
  return (
- <section id="pricing" className="bg-white py-20 sm:py-28 border-y border-stone-200">
+ <section id="pricing" className="bg-white py-14 sm:py-20 lg:py-28 border-y border-stone-200">
  <div className="mx-auto max-w-6xl px-5 sm:px-8">
  <div className="max-w-2xl">
  <p className="eyebrow text-red">{p.eyebrow}</p>
@@ -119,7 +119,7 @@ export default function Pricing() {
 
 function swatch(name: string): string {
  if (name.includes("Gray")) return "#b4b1a8";
- if (name.includes("Cappuccino")) return "#977258";
+ if (name.includes("Karva")) return "#977258";
  if (name.includes("Obsidian")) return "#3f3f42";
  return "#b4b1a8";
 }

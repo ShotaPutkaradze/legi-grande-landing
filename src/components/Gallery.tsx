@@ -15,8 +15,8 @@ type Shot = {
 const shots: Shot[] = [
   {
     src: "/gallery/grande-cappuccino-obsidian-paving.webp",
-    alt: { ka: "Grande Cappuccino და Obsidian ფილა ფასადთან", en: "Grande Cappuccino and Obsidian slabs by a facade" },
-    label: { ka: "ფასადი · Cappuccino + Obsidian", en: "Facade · Cappuccino + Obsidian" },
+    alt: { ka: "Grande Karva და Obsidian ფილა ფასადთან", en: "Grande Karva and Obsidian slabs by a facade" },
+    label: { ka: "ფასადი · Karva + Obsidian", en: "Facade · Karva + Obsidian" },
     tall: true,
   },
   {
@@ -37,8 +37,8 @@ const shots: Shot[] = [
   },
   {
     src: "/gallery/grande-cappuccino-obsidian-detail.webp",
-    alt: { ka: "Grande Cappuccino და Obsidian ზედაპირის დეტალი", en: "Grande Cappuccino and Obsidian surface detail" },
-    label: { ka: "დეტალი · Cappuccino + Obsidian", en: "Detail · Cappuccino + Obsidian" },
+    alt: { ka: "Grande Karva და Obsidian ზედაპირის დეტალი", en: "Grande Karva and Obsidian surface detail" },
+    label: { ka: "დეტალი · Karva + Obsidian", en: "Detail · Karva + Obsidian" },
   },
   {
     src: "/gallery/grande-gray-paver-closeup.webp",
@@ -58,7 +58,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <section id="gallery" className="bg-stone-50 py-20 sm:py-28 border-t border-stone-200">
+    <section id="gallery" className="bg-stone-50 py-14 sm:py-20 lg:py-28 border-t border-stone-200">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow text-red">{t.gallery.eyebrow}</p>

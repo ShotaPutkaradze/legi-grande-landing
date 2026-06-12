@@ -7,7 +7,7 @@ export default function Features() {
  const { t } = useLang();
 
  return (
- <section id="product" className="bg-white py-20 sm:py-28 border-y border-stone-200">
+ <section id="product" className="bg-white py-14 sm:py-20 lg:py-28 border-y border-stone-200">
  <div className="mx-auto max-w-7xl px-5 sm:px-8">
  <div className="max-w-2xl">
  <p className="eyebrow text-red">{t.features.eyebrow}</p>

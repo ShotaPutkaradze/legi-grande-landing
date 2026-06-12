@@ -27,49 +27,49 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 pt-28 pb-20 lg:pt-36 lg:pb-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 pt-24 pb-12 sm:pt-28 sm:pb-20 lg:pt-36 lg:pb-28">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
           {/* Copy */}
           <div className="animate-fadeUp">
-            <span className="inline-flex items-center gap-2 border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-red">
+            <span className="inline-flex items-center gap-2 border border-stone-200 bg-stone-50 px-3 py-1.5 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-red">
               <span className="h-1.5 w-1.5 bg-red" />
               {t.hero.badge}
             </span>
 
-            <h1 className="mt-6 brand-slant text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-ink">
+            <h1 className="mt-4 sm:mt-5 font-latin text-6xl sm:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.9] text-ink">
               {t.hero.title}
             </h1>
-            <div className="red-rule mt-4 w-28" />
-            <p className="mt-4 text-xl sm:text-2xl font-bold text-ink">
+            <div className="red-rule mt-3 w-24 sm:w-28" />
+            <p className="mt-3 text-lg sm:text-2xl font-bold text-ink">
               {t.hero.subtitle}
             </p>
             <p className="mt-1 brand-slant text-base text-red">{t.slogan}</p>
 
-            <p className="mt-6 max-w-lg text-base sm:text-lg text-stone-600 leading-relaxed">
+            <p className="mt-4 sm:mt-6 max-w-lg text-base sm:text-lg text-stone-600 leading-relaxed">
               {t.hero.lead}
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div className="mt-6 sm:mt-9 flex flex-wrap items-center gap-3">
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-2 bg-red px-7 py-3.5 text-base font-bold uppercase tracking-wide text-white shadow-lift hover:bg-red-dark transition-colors"
+                className="group inline-flex items-center gap-2 bg-red px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-bold uppercase tracking-wide text-white shadow-lift hover:bg-red-dark transition-colors"
               >
                 {t.hero.ctaPrimary}
                 <IconArrow className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a
                 href="#video"
-                className="inline-flex items-center gap-2 border border-stone-300 px-6 py-3.5 text-base font-bold uppercase tracking-wide text-ink hover:border-ink hover:bg-stone-50 transition-colors"
+                className="inline-flex items-center gap-2 border border-stone-300 px-5 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-bold uppercase tracking-wide text-ink hover:border-ink hover:bg-stone-50 transition-colors"
               >
                 <IconPlay className="h-4 w-4 text-red" />
                 {t.hero.ctaSecondary}
               </a>
             </div>
 
-            <dl className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-stone-200 pt-7">
+            <dl className="mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 max-w-md border-t border-stone-200 pt-6 sm:pt-7">
               {t.hero.stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="brand-slant text-3xl text-red">{s.value}</dt>
+                  <dt className="font-latin text-2xl sm:text-3xl text-red">{s.value}</dt>
                   <dd className="mt-1 text-xs text-stone-500 leading-snug">{s.label}</dd>
                 </div>
               ))}
@@ -78,17 +78,17 @@ export default function Hero() {
 
           {/* Product photo */}
           <div className="relative animate-fadeUp [animation-delay:120ms]">
-            <div className="relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden shadow-lift ring-1 ring-stone-200">
+            <div className="relative aspect-[3/4] sm:aspect-[16/10] md:aspect-[4/5] overflow-hidden shadow-lift ring-1 ring-stone-200">
               <Image
                 src="/grande-pavers-gray-cappuccino-obsidian.webp"
-                alt="Grande მსხვილფორმატიანი ბეტონის ფილა სამ ფერში — Gray, Cappuccino და Obsidian — გაზონზე"
+                alt="Grande მსხვილფორმატიანი ბეტონის ფილა სამ ფერში — Gray, Karva და Obsidian — გაზონზე"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur px-3 py-2 text-xs font-semibold text-white">
-                Grande · Gray · Cappuccino · Obsidian
+                Grande · Gray · Karva · Obsidian
               </div>
             </div>
             {/* floating chip */}

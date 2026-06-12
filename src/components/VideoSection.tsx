@@ -17,7 +17,7 @@ export default function VideoSection() {
  const [playing, setPlaying] = useState(false);
 
  return (
- <section id="video" className="bg-stone-50 py-20 sm:py-28">
+ <section id="video" className="bg-stone-50 py-14 sm:py-20 lg:py-28">
  <div className="mx-auto max-w-5xl px-5 sm:px-8">
  <div className="text-center max-w-2xl mx-auto">
  <p className="eyebrow text-red">{t.video.eyebrow}</p>

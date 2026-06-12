@@ -33,7 +33,7 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="contact" className="bg-stone-50 text-ink py-20 sm:py-28 border-t border-stone-200">
+    <section id="contact" className="bg-stone-50 text-ink py-14 sm:py-20 lg:py-28 border-t border-stone-200">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: pitch + contact */}
