@@ -1,0 +1,104 @@
+"use client";
+
+import Image from "next/image";
+import { useLang } from "@/lib/language";
+import { IconArrow, IconPlay } from "./icons";
+
+export default function Hero() {
+  const { t } = useLang();
+
+  return (
+    <section id="top" className="relative bg-white text-ink overflow-hidden">
+      {/* light grey grid texture */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-100"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(33,30,30,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(33,30,30,.035) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
+      />
+      {/* soft red corner glow */}
+      <div
+        className="pointer-events-none absolute -top-24 -left-24 h-96 w-96"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(167,31,39,.08), transparent 70%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 pt-28 pb-20 lg:pt-36 lg:pb-28">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          {/* Copy */}
+          <div className="animate-fadeUp">
+            <span className="inline-flex items-center gap-2 border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-red">
+              <span className="h-1.5 w-1.5 bg-red" />
+              {t.hero.badge}
+            </span>
+
+            <h1 className="mt-6 brand-slant text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-ink">
+              {t.hero.title}
+            </h1>
+            <div className="red-rule mt-4 w-28" />
+            <p className="mt-4 text-xl sm:text-2xl font-bold text-ink">
+              {t.hero.subtitle}
+            </p>
+            <p className="mt-1 brand-slant text-base text-red">{t.slogan}</p>
+
+            <p className="mt-6 max-w-lg text-base sm:text-lg text-stone-600 leading-relaxed">
+              {t.hero.lead}
+            </p>
+
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 bg-red px-7 py-3.5 text-base font-bold uppercase tracking-wide text-white shadow-lift hover:bg-red-dark transition-colors"
+              >
+                {t.hero.ctaPrimary}
+                <IconArrow className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+              <a
+                href="#video"
+                className="inline-flex items-center gap-2 border border-stone-300 px-6 py-3.5 text-base font-bold uppercase tracking-wide text-ink hover:border-ink hover:bg-stone-50 transition-colors"
+              >
+                <IconPlay className="h-4 w-4 text-red" />
+                {t.hero.ctaSecondary}
+              </a>
+            </div>
+
+            <dl className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-stone-200 pt-7">
+              {t.hero.stats.map((s) => (
+                <div key={s.label}>
+                  <dt className="brand-slant text-3xl text-red">{s.value}</dt>
+                  <dd className="mt-1 text-xs text-stone-500 leading-snug">{s.label}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          {/* Product photo */}
+          <div className="relative animate-fadeUp [animation-delay:120ms]">
+            <div className="relative aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden shadow-lift ring-1 ring-stone-200">
+              <Image
+                src="/grande-cappuccino-obsidian-paving.webp"
+                alt="Grande Cappuccino და Obsidian ფერის მსხვილფორმატიანი ბეტონის ფილა გარე სივრცეში"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur px-3 py-2 text-xs font-semibold text-white">
+                Grande · Cappuccino + Obsidian
+              </div>
+            </div>
+            {/* floating chip */}
+            <div className="absolute -top-4 -right-2 sm:-right-4 rotate-3 bg-red px-4 py-3 shadow-lift">
+              <div className="text-[0.65rem] font-semibold uppercase tracking-wider text-white/80">EN 1338</div>
+              <div className="text-sm font-bold text-white">Certified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

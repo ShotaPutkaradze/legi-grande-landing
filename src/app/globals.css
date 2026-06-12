@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ── LEGI brand palette ─────────────────────────────── */
+  --color-ink: #211e1e;        /* brand near-black */
+  --color-ink-soft: #2c2828;
+
+  --color-red: #a71f27;        /* brand red */
+  --color-red-dark: #841119;
+  --color-red-light: #c62d36;
+
+  /* neutral surfaces (red / black / white scheme) */
+  --color-stone-50: #f6f5f5;
+  --color-stone-100: #eeecec;
+  --color-stone-200: #e0dddd;
+  --color-stone-300: #cbc7c7;
+  --color-stone-400: #989393;
+  --color-stone-500: #6a6565;
+  --color-stone-600: #423f3f;
+
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-body), system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgba(33, 30, 30, 0.05), 0 8px 22px rgba(33, 30, 30, 0.07);
+  --shadow-lift: 0 16px 44px rgba(33, 30, 30, 0.20);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }
+
+::selection {
+  background: var(--color-red);
+  color: #fff;
+}
+
+/* Sharp, industrial — no rounded corners anywhere. */
+
+/* Dark concrete sections with a red glow */
+.bg-concrete {
+  background-color: var(--color-ink);
+  background-image:
+    radial-gradient(circle at 16% 16%, rgba(167, 31, 39, 0.22), transparent 45%),
+    radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.04), transparent 42%);
+}
+
+/* Brand slant — aggressive italic feel of the logo */
+.brand-slant {
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+/* Red skewed marker that precedes every section eyebrow */
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.5rem;
+  background: var(--color-red);
+  margin-right: 0.6rem;
+  vertical-align: middle;
+  transform: skewX(-18deg);
+}
+
+/* Diagonal red underline like the logo swoosh */
+.red-rule {
+  height: 5px;
+  background: var(--color-red);
+  transform: skewX(-22deg);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeUp { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }

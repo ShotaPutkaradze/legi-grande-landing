@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grande — LEGI product landing page
 
-## Getting Started
+A single-page landing page for **Grande**, LEGI's large-format concrete paving slab.
+Built for a Facebook ad campaign: video showcase, feature highlights, photo gallery,
+price table, and a lead-capture form that emails each submission to sales.
 
-First, run the development server:
+- **Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS v4 · TypeScript
+- **Languages:** Georgian (default) + English toggle in the header
+- **Leads:** posted to `/api/lead`, delivered by email via [Resend](https://resend.com)
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where to put the real content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Everything below ships with polished **placeholders** — swap them for the real thing:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| What | File | How |
+|------|------|-----|
+| **Video** ⏳ | `src/components/VideoSection.tsx` | Still a placeholder. Set `VIDEO_EMBED_URL` to a YouTube/Vimeo *embed* URL (e.g. `https://www.youtube.com/embed/ID`). |
+| **Gallery photos** ✅ | `src/components/Gallery.tsx` | Real Grande photos in `public/gallery/`. Each `shots` item has `src`, bilingual `alt`, and `label`. |
+| **Hero photo** ✅ | `src/components/Hero.tsx` | `public/grande-cappuccino-obsidian-paving.webp`. |
+| **Prices / colours** ✅ | `src/lib/content.ts` → `pricing.rows` | Real colours (Gray, Cappuccino, Obsidian). Edit name, size, thickness, price, `popular`. Swatch hexes in `Pricing.tsx`. |
+| **All copy / translations** | `src/lib/content.ts` | One file holds every Georgian + English string. |
+| **Phone number** | `src/lib/content.ts` → `PHONE` / `PHONE_HREF` | |
+| **Logo / favicon** ✅ | `public/legi-logo.webp`, `src/app/icon.svg` | Real Legi logo + brick favicon. |
 
-## Learn More
+### Regenerating images from source
 
-To learn more about Next.js, take a look at the following resources:
+Original photos and logo files live in `Photos/` (git-ignored, not deployed). To
+re-process them into web-optimised WebP (using `sharp`, which ships with Next), run
+the conversion snippet — see the `node -e` script used to build `public/gallery/*`,
+`public/legi-logo.webp`, the app icons, and `public/og-grande.jpg`. Source images are
+8064×6048 (~25 MB); outputs are ~0.5 MB WebP. Names are SEO-friendly
+(`grande-<colour>-<context>.webp`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Lead email setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The form works immediately — with no config it just **logs** submissions to the server
+(nothing is lost). To receive emails:
 
-## Deploy on Vercel
+1. Create a free account at [resend.com](https://resend.com) and get an API key.
+2. Copy `.env.example` to `.env.local` and fill in:
+   ```
+   RESEND_API_KEY=re_xxxxxxxx
+   LEAD_NOTIFY_EMAIL=sales@legi.ge
+   ```
+3. For production from `legi.ge`, verify the domain in Resend and set
+   `LEAD_FROM_EMAIL=Grande <noreply@legi.ge>`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+On Vercel, add the same variables under **Project → Settings → Environment Variables**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+```bash
+npm i -g vercel
+vercel            # preview
+vercel --prod     # production
+```
