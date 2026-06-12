@@ -11,6 +11,9 @@ const notoGeorgian = Noto_Sans_Georgian({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://legi-grande-landing.workers.dev",
+  ),
   title: "Grande — მსხვილფორმატიანი ბეტონის ფილა | LEGI",
   description:
     "Grande — დიდი ფორმატის ტროტუარის ფილა LEGI-სგან. ევროპული დიზაინი, ყინვაგამძლე, 8 სმ სისქე. მიიღე ფასი და კონსულტაცია.",

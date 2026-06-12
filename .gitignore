@@ -42,3 +42,9 @@ next-env.d.ts
 
 # Source design assets (originals kept locally, not deployed)
 /Photos/
+
+# Cloudflare / OpenNext
+.open-next/
+.wrangler/
+.dev.vars
+cloudflare-env.d.ts
