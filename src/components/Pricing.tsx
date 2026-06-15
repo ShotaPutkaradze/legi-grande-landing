@@ -18,9 +18,12 @@ export default function Pricing() {
         </div>
 
         {/* Limited-time promotion banner */}
-        <div className="mt-6 flex items-center gap-2.5 border border-red/30 bg-red/5 px-4 py-3 text-sm font-bold text-red">
+        <div className="mt-6 flex items-center gap-3 bg-gradient-to-r from-red to-red-dark px-5 py-3.5 text-white shadow-lift ring-1 ring-red-dark/20 sm:gap-3.5">
+          <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-white animate-livePulse" aria-hidden />
           <IconClock className="h-5 w-5 shrink-0" />
-          {p.promoNote}
+          <p className="text-sm font-bold leading-snug tracking-tight sm:text-base">
+            {p.promoNote}
+          </p>
         </div>
 
         {/* Desktop table */}
@@ -109,24 +112,24 @@ export default function Pricing() {
               <div className="mt-2 text-sm text-stone-500">
                 {r.size} · {r.thickness}
               </div>
-              <div className="mt-4 grid grid-cols-2 gap-3 border-t border-stone-200 pt-4">
-                <div>
-                  <div className="text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+              <div className="mt-4 grid grid-cols-2 items-stretch gap-3 border-t border-stone-200 pt-4">
+                <div className="flex flex-col">
+                  <div className="flex min-h-[1.5rem] items-center text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
                     {p.columns.underTier}
                   </div>
-                  <div className="mt-0.5">
+                  <div className="mt-auto pt-1.5">
                     <span className="text-2xl font-extrabold text-ink">{r.pricePiece}</span>
                     <span className="ml-1 text-xs text-stone-500">{p.unitPiece}</span>
                   </div>
                 </div>
-                <div>
-                  <div className="flex flex-wrap items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+                <div className="flex flex-col">
+                  <div className="flex min-h-[1.5rem] flex-wrap items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
                     {p.columns.aboveTier}
                     <span className="bg-red px-1.5 py-0.5 text-[0.55rem] font-bold normal-case tracking-normal text-white">
                       {p.promoTag}
                     </span>
                   </div>
-                  <div className="mt-0.5">
+                  <div className="mt-auto pt-1.5">
                     <span className="text-2xl font-extrabold text-ink">{r.priceSqm}</span>
                     <span className="ml-1 text-xs text-stone-500">{p.unitSqm}</span>
                   </div>

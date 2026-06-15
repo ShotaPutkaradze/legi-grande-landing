@@ -23,7 +23,7 @@ export const content = {
       ctaPrimary: "მიიღე ფასი",
       ctaSecondary: "ფასების ნახვა",
       ctaPrice: "გაიგე ფასი",
-      photoCaption: "Grande · ნაცრისფერი · ყავისფერი · ობსიდიანი",
+      photoCaption: "Grande · გრეი · კაპუჩინო · ობსიდიანი",
       certified: "სერტიფიცირებული",
       stats: [
         { value: "15+", label: "წლიანი გამოცდილება" },
@@ -70,7 +70,7 @@ export const content = {
     gallery: {
       eyebrow: "გალერეა",
       title: "Grande ობიექტებზე",
-      text: "რეალური ობიექტები Grande ფილით — ნაცრისფერ, ყავისფერ და ობსიდიან ფერებში.",
+      text: "რეალური ობიექტები Grande ფილით — გრეი, კაპუჩინო და ობსიდიანი ფერებში.",
     },
     pricing: {
       eyebrow: "ფასები",
@@ -78,7 +78,7 @@ export const content = {
       note: "30 ცალამდე ფასი მითითებულია ცალობით, 30 ცალიდან — კვადრატულ მეტრზე (მ²). ფასები დღგ-ს ჩათვლით. მინიმალური შეკვეთა არ არის.",
       popular: "პოპულარული",
       promoTag: "აქცია",
-      promoNote: "30 ცალიდან ფასი — შეზღუდული დროის აქცია, მოქმედებს 15 ივლისამდე.",
+      promoNote: "30 ცალიდან ფასი — შეზღუდული დროით, აქცია მოქმედებს 15 ივლისამდე.",
       unitPiece: "₾ / ცალი",
       unitSqm: "₾ / მ²",
       cta: "შეუკვეთე",
@@ -89,8 +89,8 @@ export const content = {
         aboveTier: "30 ცალი და მეტი",
       },
       rows: [
-        { name: "Grande — ნაცრისფერი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "14", priceSqm: "35", popular: false, swatch: "#b4b1a8" },
-        { name: "Grande — ყავისფერი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
+        { name: "Grande — გრეი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "14", priceSqm: "35", popular: false, swatch: "#b4b1a8" },
+        { name: "Grande — კაპუჩინო", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
         { name: "Grande — ობსიდიანი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: false, swatch: "#3f3f42" },
       ],
     },
@@ -137,7 +137,7 @@ export const content = {
       ctaPrimary: "Get a price",
       ctaSecondary: "See prices",
       ctaPrice: "Learn price",
-      photoCaption: "Grande · Gray · Karva · Obsidian",
+      photoCaption: "Grande · Gray · Cappuccino · Obsidian",
       certified: "Certified",
       stats: [
         { value: "15+", label: "years of experience" },
@@ -184,7 +184,7 @@ export const content = {
     gallery: {
       eyebrow: "Gallery",
       title: "Grande on site",
-      text: "Real installations with Grande slabs — in Gray, Karva and Obsidian.",
+      text: "Real installations with Grande slabs — in Gray, Cappuccino and Obsidian.",
     },
     pricing: {
       eyebrow: "Pricing",
@@ -204,7 +204,7 @@ export const content = {
       },
       rows: [
         { name: "Grande — Gray", size: "80×40 cm", thickness: "8 cm", pricePiece: "14", priceSqm: "35", popular: false, swatch: "#b4b1a8" },
-        { name: "Grande — Karva", size: "80×40 cm", thickness: "8 cm", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
+        { name: "Grande — Cappuccino", size: "80×40 cm", thickness: "8 cm", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
         { name: "Grande — Obsidian", size: "80×40 cm", thickness: "8 cm", pricePiece: "24", priceSqm: "48", popular: false, swatch: "#3f3f42" },
       ],
     },

@@ -24,7 +24,7 @@ Everything below ships with polished **placeholders** — swap them for the real
 | **Video** ⏳ | `src/components/VideoSection.tsx` | Still a placeholder. Set `VIDEO_EMBED_URL` to a YouTube/Vimeo *embed* URL (e.g. `https://www.youtube.com/embed/ID`). |
 | **Gallery photos** ✅ | `src/components/Gallery.tsx` | Real Grande photos in `public/gallery/`. Each `shots` item has `src`, bilingual `alt`, and `label`. |
 | **Hero photo** ✅ | `src/components/Hero.tsx` | `public/grande-pavers-gray-cappuccino-obsidian.webp` (all three colours). |
-| **Prices / colours** ✅ | `src/lib/content.ts` → `pricing.rows` | Real colours (Gray, Karva, Obsidian). Edit name, size, thickness, price, `popular`. Swatch hexes in `Pricing.tsx`. |
+| **Prices / colours** ✅ | `src/lib/content.ts` → `pricing.rows` | Real colours (Gray, Cappuccino, Obsidian). Edit name, size, thickness, price, `popular`. Swatch hexes in `Pricing.tsx`. |
 | **All copy / translations** | `src/lib/content.ts` | One file holds every Georgian + English string. |
 | **Phone number** | `src/lib/content.ts` → `PHONE` / `PHONE_HREF` | |
 | **Logo / favicon** ✅ | `public/legi-logo.webp`, `src/app/icon.svg` | Real Legi logo + brick favicon. |

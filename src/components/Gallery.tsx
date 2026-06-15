@@ -15,14 +15,14 @@ type Shot = {
 const shots: Shot[] = [
   {
     src: "/gallery/grande-cappuccino-obsidian-paving.webp",
-    alt: { ka: "Grande ყავისფერი და ობსიდიანი ფილა ფასადთან", en: "Grande Karva and Obsidian slabs by a facade" },
-    label: { ka: "ფასადი · ყავისფერი + ობსიდიანი", en: "Facade · Karva + Obsidian" },
+    alt: { ka: "Grande კაპუჩინო და ობსიდიანი ფილა ფასადთან", en: "Grande Cappuccino and Obsidian slabs by a facade" },
+    label: { ka: "ფასადი · კაპუჩინო + ობსიდიანი", en: "Facade · Cappuccino + Obsidian" },
     tall: true,
   },
   {
     src: "/gallery/grande-gray-stepping-stones-lawn.webp",
-    alt: { ka: "Grande ნაცრისფერი ფილა მოლზე, ბილიკად", en: "Grande Gray slabs as a path on a lawn" },
-    label: { ka: "ბილიკი · ნაცრისფერი", en: "Pathway · Gray" },
+    alt: { ka: "Grande გრეი ფილა მოლზე, ბილიკად", en: "Grande Gray slabs as a path on a lawn" },
+    label: { ka: "ბილიკი · გრეი", en: "Pathway · Gray" },
   },
   {
     src: "/gallery/grande-obsidian-paver-closeup.webp",
@@ -31,14 +31,14 @@ const shots: Shot[] = [
   },
   {
     src: "/gallery/grande-gray-garden-pathway.webp",
-    alt: { ka: "Grande ნაცრისფერი ფილა ეზოში", en: "Grande Gray slabs in a garden" },
-    label: { ka: "ეზო · ნაცრისფერი", en: "Garden · Gray" },
+    alt: { ka: "Grande გრეი ფილა ეზოში", en: "Grande Gray slabs in a garden" },
+    label: { ka: "ეზო · გრეი", en: "Garden · Gray" },
     tall: true,
   },
   {
     src: "/gallery/grande-cappuccino-obsidian-detail.webp",
-    alt: { ka: "Grande ყავისფერი და ობსიდიანი ზედაპირის დეტალი", en: "Grande Karva and Obsidian surface detail" },
-    label: { ka: "დეტალი · ყავისფერი + ობსიდიანი", en: "Detail · Karva + Obsidian" },
+    alt: { ka: "Grande კაპუჩინო და ობსიდიანი ზედაპირის დეტალი", en: "Grande Cappuccino and Obsidian surface detail" },
+    label: { ka: "დეტალი · კაპუჩინო + ობსიდიანი", en: "Detail · Cappuccino + Obsidian" },
   },
   {
     src: "/gallery/grande-obsidian-stepping-stones-path.webp",
@@ -48,8 +48,8 @@ const shots: Shot[] = [
   },
   {
     src: "/gallery/grande-gray-paver-closeup.webp",
-    alt: { ka: "Grande ნაცრისფერი ფილის ზედაპირი ახლოდან", en: "Grande Gray slab surface up close" },
-    label: { ka: "ზედაპირი · ნაცრისფერი", en: "Surface · Gray" },
+    alt: { ka: "Grande გრეი ფილის ზედაპირი ახლოდან", en: "Grande Gray slab surface up close" },
+    label: { ka: "ზედაპირი · გრეი", en: "Surface · Gray" },
   },
 ];
 
