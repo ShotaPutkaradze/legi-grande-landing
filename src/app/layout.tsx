@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Noto_Sans_Georgian, Oswald } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language";
+import PhoneTracker from "@/components/PhoneTracker";
 
 // Meta (Facebook) Pixel ID. Change here to point at a different pixel.
 const META_PIXEL_ID = "2195529237958457";
@@ -91,6 +92,7 @@ fbq('track', 'PageView');`}
             alt=""
           />
         </noscript>
+        <PhoneTracker />
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
