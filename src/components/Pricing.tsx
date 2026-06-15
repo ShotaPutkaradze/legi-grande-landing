@@ -1,7 +1,7 @@
 "use client";
 
 import { useLang } from "@/lib/language";
-import { IconArrow, IconCheck } from "./icons";
+import { IconArrow, IconCheck, IconClock } from "./icons";
 
 export default function Pricing() {
   const { t } = useLang();
@@ -17,6 +17,12 @@ export default function Pricing() {
           </h2>
         </div>
 
+        {/* Limited-time promotion banner */}
+        <div className="mt-6 flex items-center gap-2.5 border border-red/30 bg-red/5 px-4 py-3 text-sm font-bold text-red">
+          <IconClock className="h-5 w-5 shrink-0" />
+          {p.promoNote}
+        </div>
+
         {/* Desktop table */}
         <div className="mt-10 hidden md:block overflow-x-auto border border-stone-200">
           <table className="w-full text-left">
@@ -25,7 +31,14 @@ export default function Pricing() {
                 <th className="px-6 py-4 font-semibold">{p.columns.product}</th>
                 <th className="px-6 py-4 font-semibold">{p.columns.size}</th>
                 <th className="px-6 py-4 font-semibold text-right">{p.columns.underTier}</th>
-                <th className="px-6 py-4 font-semibold text-right">{p.columns.aboveTier}</th>
+                <th className="px-6 py-4 font-semibold text-right">
+                  <span className="flex flex-col items-end gap-1.5">
+                    <span className="whitespace-nowrap">{p.columns.aboveTier}</span>
+                    <span className="bg-red px-1.5 py-0.5 text-[0.6rem] font-bold tracking-normal normal-case text-white">
+                      {p.promoTag}
+                    </span>
+                  </span>
+                </th>
                 <th className="px-6 py-4" />
               </tr>
             </thead>
@@ -107,8 +120,11 @@ export default function Pricing() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+                  <div className="flex flex-wrap items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
                     {p.columns.aboveTier}
+                    <span className="bg-red px-1.5 py-0.5 text-[0.55rem] font-bold normal-case tracking-normal text-white">
+                      {p.promoTag}
+                    </span>
                   </div>
                   <div className="mt-0.5">
                     <span className="text-2xl font-extrabold text-ink">{r.priceSqm}</span>

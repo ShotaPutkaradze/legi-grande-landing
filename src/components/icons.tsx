@@ -57,6 +57,24 @@ export function IconInstall({ className = base }: IconProps) {
  );
 }
 
+export function IconLeaf({ className = base }: IconProps) {
+ return (
+ <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+ <path d="M5 21c0-9 6-15 16-16C20 14 14 20 5 21z" />
+ <path d="M5 21c3-6 7-9 12-10" opacity="0.7" />
+ </svg>
+ );
+}
+
+export function IconClock({ className = base }: IconProps) {
+ return (
+ <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+ <circle cx="12" cy="12" r="9" />
+ <path d="M12 7.5V12l3 2" />
+ </svg>
+ );
+}
+
 export function IconPlay({ className = base }: IconProps) {
  return (
  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -106,4 +124,4 @@ export function IconClose({ className = base }: IconProps) {
  );
 }
 
-export const featureIcons = [IconFormat, IconStandard, IconFrost, IconLoad, IconColor, IconInstall];
+export const featureIcons = [IconFormat, IconStandard, IconFrost, IconLoad, IconColor, IconLeaf];
