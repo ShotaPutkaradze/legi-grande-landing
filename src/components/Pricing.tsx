@@ -4,119 +4,134 @@ import { useLang } from "@/lib/language";
 import { IconArrow, IconCheck } from "./icons";
 
 export default function Pricing() {
- const { t } = useLang();
- const p = t.pricing;
+  const { t } = useLang();
+  const p = t.pricing;
 
- return (
- <section id="pricing" className="bg-stone-50 py-14 sm:py-20 lg:py-28 border-y border-stone-200">
- <div className="mx-auto max-w-6xl px-5 sm:px-8">
- <div className="max-w-2xl">
- <p className="eyebrow text-red">{p.eyebrow}</p>
- <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
- {p.title}
- </h2>
- </div>
+  return (
+    <section id="pricing" className="bg-stone-50 py-14 sm:py-20 lg:py-28 border-y border-stone-200">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="max-w-2xl">
+          <p className="eyebrow text-red">{p.eyebrow}</p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
+            {p.title}
+          </h2>
+        </div>
 
- {/* Desktop table */}
- <div className="mt-10 hidden md:block overflow-hidden border border-stone-200">
- <table className="w-full text-left">
- <thead>
- <tr className="bg-stone-100 text-xs uppercase tracking-wider text-stone-500">
- <th className="px-6 py-4 font-semibold">{p.columns.product}</th>
- <th className="px-6 py-4 font-semibold">{p.columns.size}</th>
- <th className="px-6 py-4 font-semibold">{p.columns.thickness}</th>
- <th className="px-6 py-4 font-semibold text-right">{p.columns.price}</th>
- <th className="px-6 py-4" />
- </tr>
- </thead>
- <tbody className="divide-y divide-stone-200">
- {p.rows.map((r) => (
- <tr key={r.name} className={r.popular ? "bg-red/5" : "bg-white"}>
- <td className="px-6 py-5">
- <div className="flex items-center gap-3">
- <span
- className="h-7 w-7 ring-1 ring-stone-300"
- style={{ backgroundColor: r.swatch }}
- />
- <span className="font-semibold text-ink">{r.name}</span>
- {r.popular && (
- <span className=" bg-red px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white">
- {p.popular}
- </span>
- )}
- </div>
- </td>
- <td className="px-6 py-5 text-stone-600">{r.size}</td>
- <td className="px-6 py-5 text-stone-600">{r.thickness}</td>
- <td className="px-6 py-5 text-right">
- <span className="text-xl font-extrabold text-ink">{r.price}</span>
- <span className="ml-1 text-sm text-stone-500">{p.unit}</span>
- </td>
- <td className="px-6 py-5 text-right">
- <a
- href="#contact"
- className="inline-flex items-center gap-1.5 bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-red transition-colors"
- >
- {p.cta}
- <IconArrow className="h-3.5 w-3.5" />
- </a>
- </td>
- </tr>
- ))}
- </tbody>
- </table>
- </div>
+        {/* Desktop table */}
+        <div className="mt-10 hidden md:block overflow-x-auto border border-stone-200">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="bg-stone-100 text-xs uppercase tracking-wider text-stone-500">
+                <th className="px-6 py-4 font-semibold">{p.columns.product}</th>
+                <th className="px-6 py-4 font-semibold">{p.columns.size}</th>
+                <th className="px-6 py-4 font-semibold text-right">{p.columns.underTier}</th>
+                <th className="px-6 py-4 font-semibold text-right">{p.columns.aboveTier}</th>
+                <th className="px-6 py-4" />
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-stone-200">
+              {p.rows.map((r) => (
+                <tr key={r.name} className={r.popular ? "bg-red/5" : "bg-white"}>
+                  <td className="px-6 py-5">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="h-7 w-7 ring-1 ring-stone-300"
+                        style={{ backgroundColor: r.swatch }}
+                      />
+                      <span className="font-semibold text-ink">{r.name}</span>
+                      {r.popular && (
+                        <span className="bg-red px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white">
+                          {p.popular}
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-6 py-5 text-stone-600 whitespace-nowrap">
+                    {r.size} · {r.thickness}
+                  </td>
+                  <td className="px-6 py-5 text-right whitespace-nowrap">
+                    <span className="text-xl font-extrabold text-ink">{r.pricePiece}</span>
+                    <span className="ml-1 text-xs text-stone-500">{p.unitPiece}</span>
+                  </td>
+                  <td className="px-6 py-5 text-right whitespace-nowrap">
+                    <span className="text-xl font-extrabold text-ink">{r.priceSqm}</span>
+                    <span className="ml-1 text-xs text-stone-500">{p.unitSqm}</span>
+                  </td>
+                  <td className="px-6 py-5 text-right">
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center gap-1.5 bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-red transition-colors"
+                    >
+                      {p.cta}
+                      <IconArrow className="h-3.5 w-3.5" />
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
- {/* Mobile cards */}
- <div className="mt-8 md:hidden grid gap-4">
- {p.rows.map((r) => (
- <div
- key={r.name}
- className={` border p-5 ${
- r.popular ? "border-red bg-red/5" : "border-stone-200 bg-white"
- }`}
- >
- <div className="flex items-center gap-3">
- <span
- className="h-8 w-8 ring-1 ring-stone-300"
- style={{ backgroundColor: r.swatch }}
- />
- <span className="font-bold text-ink">{r.name}</span>
- {r.popular && (
- <span className="ml-auto bg-red px-2.5 py-0.5 text-[0.6rem] font-bold uppercase text-white">
- {p.popular}
- </span>
- )}
- </div>
- <div className="mt-4 flex items-end justify-between">
- <div className="text-sm text-stone-500">
- {r.size} · {r.thickness}
- </div>
- <div>
- <span className="text-2xl font-extrabold text-ink">{r.price}</span>
- <span className="ml-1 text-sm text-stone-500">{p.unit}</span>
- </div>
- </div>
- <a
- href="#contact"
- className="mt-4 flex items-center justify-center gap-1.5 bg-ink px-4 py-2.5 text-sm font-semibold text-white"
- >
- {p.cta}
- <IconArrow className="h-3.5 w-3.5" />
- </a>
- </div>
- ))}
- </div>
+        {/* Mobile cards */}
+        <div className="mt-8 md:hidden grid gap-4">
+          {p.rows.map((r) => (
+            <div
+              key={r.name}
+              className={`border p-5 ${
+                r.popular ? "border-red bg-red/5" : "border-stone-200 bg-white"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className="h-8 w-8 ring-1 ring-stone-300"
+                  style={{ backgroundColor: r.swatch }}
+                />
+                <span className="font-bold text-ink">{r.name}</span>
+                {r.popular && (
+                  <span className="ml-auto bg-red px-2.5 py-0.5 text-[0.6rem] font-bold uppercase text-white">
+                    {p.popular}
+                  </span>
+                )}
+              </div>
+              <div className="mt-2 text-sm text-stone-500">
+                {r.size} · {r.thickness}
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-3 border-t border-stone-200 pt-4">
+                <div>
+                  <div className="text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+                    {p.columns.underTier}
+                  </div>
+                  <div className="mt-0.5">
+                    <span className="text-2xl font-extrabold text-ink">{r.pricePiece}</span>
+                    <span className="ml-1 text-xs text-stone-500">{p.unitPiece}</span>
+                  </div>
+                </div>
+                <div>
+                  <div className="text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+                    {p.columns.aboveTier}
+                  </div>
+                  <div className="mt-0.5">
+                    <span className="text-2xl font-extrabold text-ink">{r.priceSqm}</span>
+                    <span className="ml-1 text-xs text-stone-500">{p.unitSqm}</span>
+                  </div>
+                </div>
+              </div>
+              <a
+                href="#contact"
+                className="mt-4 flex items-center justify-center gap-1.5 bg-ink px-4 py-2.5 text-sm font-semibold text-white"
+              >
+                {p.cta}
+                <IconArrow className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          ))}
+        </div>
 
- <p className="mt-6 flex items-start gap-2 text-sm font-semibold text-ink">
- <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-red" />
- {p.minOrder}
- </p>
- <p className="mt-2 flex items-start gap-2 text-sm text-stone-500">
- <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-red" />
- {p.note}
- </p>
- </div>
- </section>
- );
+        <p className="mt-6 flex items-start gap-2 text-sm text-stone-500">
+          <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-red" />
+          {p.note}
+        </p>
+      </div>
+    </section>
+  );
 }
