@@ -27,6 +27,11 @@ export default function LeadForm() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error("request failed");
+      // Meta Pixel: standard Lead conversion event for ad optimization.
+      (window as Window & { fbq?: (...args: unknown[]) => void }).fbq?.(
+        "track",
+        "Lead",
+      );
       form.reset();
       setStatus("success");
     } catch {
