@@ -53,7 +53,7 @@ export default function Hero() {
             <div className="relative aspect-[3/4] sm:aspect-[16/10] md:aspect-auto md:h-full overflow-hidden shadow-lift ring-1 ring-stone-200">
               <Image
                 src="/grande-pavers-gray-cappuccino-obsidian.webp"
-                alt="Grande მსხვილფორმატიანი ბეტონის ფილა სამ ფერში — გრეი, კაპუჩინო და ობსიდიანი — გაზონზე"
+                alt="Grande მსხვილფორმატიანი ბეტონის ფილა სამ ფერში — ნაცრისფერი, კაპუჩინო და ობსიდიანი — გაზონზე"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"

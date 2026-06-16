@@ -23,7 +23,7 @@ export const content = {
       ctaPrimary: "მიიღე ფასი",
       ctaSecondary: "ფასების ნახვა",
       ctaPrice: "გაიგე ფასი",
-      photoCaption: "Grande · გრეი · კაპუჩინო · ობსიდიანი",
+      photoCaption: "Grande · ნაცრისფერი · კაპუჩინო · ობსიდიანი",
       certified: "სერტიფიცირებული",
       stats: [
         { value: "15+", label: "წლიანი გამოცდილება" },
@@ -70,7 +70,7 @@ export const content = {
     gallery: {
       eyebrow: "გალერეა",
       title: "Grande ობიექტებზე",
-      text: "რეალური ობიექტები Grande ფილით — გრეი, კაპუჩინო და ობსიდიანი ფერებში.",
+      text: "რეალური ობიექტები Grande ფილით — ნაცრისფერი, კაპუჩინო და ობსიდიანი ფერებში.",
     },
     pricing: {
       eyebrow: "ფასები",
@@ -89,7 +89,7 @@ export const content = {
         aboveTier: "30 ცალი და მეტი",
       },
       rows: [
-        { name: "Grande — გრეი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "14", priceSqm: "35", popular: false, swatch: "#b4b1a8" },
+        { name: "Grande — ნაცრისფერი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "14", priceSqm: "35", popular: false, swatch: "#b4b1a8" },
         { name: "Grande — კაპუჩინო", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
         { name: "Grande — ობსიდიანი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: false, swatch: "#3f3f42" },
       ],

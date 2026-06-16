@@ -21,8 +21,8 @@ const shots: Shot[] = [
   },
   {
     src: "/gallery/grande-gray-stepping-stones-lawn.webp",
-    alt: { ka: "Grande გრეი ფილა მოლზე, ბილიკად", en: "Grande Gray slabs as a path on a lawn" },
-    label: { ka: "ბილიკი · გრეი", en: "Pathway · Gray" },
+    alt: { ka: "Grande ნაცრისფერი ფილა მოლზე, ბილიკად", en: "Grande Gray slabs as a path on a lawn" },
+    label: { ka: "ბილიკი · ნაცრისფერი", en: "Pathway · Gray" },
   },
   {
     src: "/gallery/grande-obsidian-paver-closeup.webp",
@@ -31,8 +31,8 @@ const shots: Shot[] = [
   },
   {
     src: "/gallery/grande-gray-garden-pathway.webp",
-    alt: { ka: "Grande გრეი ფილა ეზოში", en: "Grande Gray slabs in a garden" },
-    label: { ka: "ეზო · გრეი", en: "Garden · Gray" },
+    alt: { ka: "Grande ნაცრისფერი ფილა ეზოში", en: "Grande Gray slabs in a garden" },
+    label: { ka: "ეზო · ნაცრისფერი", en: "Garden · Gray" },
     tall: true,
   },
   {
@@ -48,8 +48,8 @@ const shots: Shot[] = [
   },
   {
     src: "/gallery/grande-gray-paver-closeup.webp",
-    alt: { ka: "Grande გრეი ფილის ზედაპირი ახლოდან", en: "Grande Gray slab surface up close" },
-    label: { ka: "ზედაპირი · გრეი", en: "Surface · Gray" },
+    alt: { ka: "Grande ნაცრისფერი ფილის ზედაპირი ახლოდან", en: "Grande Gray slab surface up close" },
+    label: { ka: "ზედაპირი · ნაცრისფერი", en: "Surface · Gray" },
   },
 ];
 
