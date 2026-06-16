@@ -114,7 +114,7 @@ export default function Pricing() {
               </div>
               <div className="mt-4 grid grid-cols-2 items-stretch gap-3 border-t border-stone-200 pt-4">
                 <div className="flex flex-col">
-                  <div className="flex min-h-[1.5rem] items-center text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+                  <div className="flex min-h-[1.5rem] items-start text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
                     {p.columns.underTier}
                   </div>
                   <div className="mt-auto pt-1.5">
@@ -123,7 +123,7 @@ export default function Pricing() {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className="flex min-h-[1.5rem] flex-wrap items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+                  <div className="flex min-h-[1.5rem] flex-wrap items-start gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
                     {p.columns.aboveTier}
                     <span className="bg-red px-1.5 py-0.5 text-[0.55rem] font-bold normal-case tracking-normal text-white">
                       {p.promoTag}
