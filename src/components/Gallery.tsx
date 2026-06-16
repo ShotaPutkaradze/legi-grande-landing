@@ -15,8 +15,8 @@ type Shot = {
 const shots: Shot[] = [
   {
     src: "/gallery/grande-cappuccino-obsidian-paving.webp",
-    alt: { ka: "Grande კაპუჩინო და ობსიდიანი ფილა ფასადთან", en: "Grande Cappuccino and Obsidian slabs by a facade" },
-    label: { ka: "ფასადი · კაპუჩინო + ობსიდიანი", en: "Facade · Cappuccino + Obsidian" },
+    alt: { ka: "Grande კაპუჩინო და ობსიდიანი ფილის დაგების მაგალითი", en: "Example paving layout with Grande Cappuccino and Obsidian slabs" },
+    label: { ka: "განლაგება · კაპუჩინო + ობსიდიანი", en: "Layout · Cappuccino + Obsidian" },
     tall: true,
   },
   {
