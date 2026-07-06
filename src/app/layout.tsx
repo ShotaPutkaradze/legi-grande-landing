@@ -110,7 +110,7 @@ fbq('track', 'PageView');`}
                 language-code="ru"
                 max-query-length="-1">
 <df-messenger-chat-bubble
-                  chat-title="Менеджер Ана">
+                  chat-title="AI დამხმარე">
 </df-messenger-chat-bubble>
 </df-messenger>
 <style>
