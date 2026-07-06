@@ -63,7 +63,7 @@ export default function RootLayout({
 <html lang="ka" className={`${notoGeorgian.variable} ${oswald.variable} h-full antialiased`}>
 <head>
         {/* 1. Стили виджета Dialogflow */}
-<link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css%22 />
+<link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css%22" />
 </head>
 <body className="min-h-full flex flex-col">
         {/* Meta Pixel */}
