@@ -4,25 +4,20 @@ import { Noto_Sans_Georgian, Oswald } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language";
 import PhoneTracker from "@/components/PhoneTracker";
-
 // Meta (Facebook) Pixel ID. Change here to point at a different pixel.
 const META_PIXEL_ID = "2195529237958457";
-
 const notoGeorgian = Noto_Sans_Georgian({
   variable: "--font-body",
   subsets: ["georgian", "latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
-
-// Industrial display face for Latin headlines (e.g. the GRANDE wordmark).
 const oswald = Oswald({
   variable: "--font-latin",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   display: "swap",
 });
-
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://legi-grande-landing.workers.dev",
@@ -56,21 +51,23 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 };
-
 export const viewport: Viewport = {
   themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ka" className={`${notoGeorgian.variable} ${oswald.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+<html lang="ka" className={`${notoGeorgian.variable} ${oswald.variable} h-full antialiased`}>
+<head>
+        {/* 1. Стили виджета Dialogflow */}
+<link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css%22 />
+</head>
+<body className="min-h-full flex flex-col">
         {/* Meta Pixel */}
-        <Script id="meta-pixel" strategy="afterInteractive">
+<Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -81,20 +78,58 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${META_PIXEL_ID}');
 fbq('track', 'PageView');`}
-        </Script>
-        <noscript>
+</Script>
+<noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+<img
             height="1"
             width="1"
             style={{ display: "none" }}
             src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
             alt=""
           />
-        </noscript>
+</noscript>
+ 
         <PhoneTracker />
-        <LanguageProvider>{children}</LanguageProvider>
-      </body>
-    </html>
+<LanguageProvider>{children}</LanguageProvider>
+ 
+        {/* 2. Скрипт виджета (strategy="lazyOnload" загрузит его после загрузки сайта, чтобы не тормозить скорость) */}
+<Script 
+          src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js" 
+          strategy="lazyOnload" 
+        />
+        {/* 3. Сам HTML код виджета и стили. 
+            Вставляем через dangerouslySetInnerHTML, чтобы TypeScript не ругался на кастомные теги <df-messenger> */}
+<div
+          dangerouslySetInnerHTML={{
+            __html: `
+<df-messenger
+                location="europe-west3"
+                project-id="gen-lang-client-0970961690"
+                agent-id="2d05dad3-48c1-41df-bfc3-6bb138b70b0e"
+                language-code="ru"
+                max-query-length="-1">
+<df-messenger-chat-bubble
+                  chat-title="Менеджер Ана">
+</df-messenger-chat-bubble>
+</df-messenger>
+<style>
+                df-messenger {
+                  z-index: 999;
+                  position: fixed;
+                  --df-messenger-font-color: #000;
+                  --df-messenger-font-family: var(--font-body), sans-serif;
+                  --df-messenger-chat-background: #f3f6fc;
+                  --df-messenger-message-user-background: #d3e3fd;
+                  --df-messenger-message-bot-background: #ffffff;
+                  bottom: 16px;
+                  right: 16px;
+                }
+</style>
+            `,
+          }}
+        />
+</body>
+</html>
   );
 }
