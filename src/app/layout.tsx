@@ -94,7 +94,7 @@ fbq('track', 'PageView');`}
         </noscript>
         <PhoneTracker />
         <LanguageProvider>{children}</LanguageProvider>
-        html<link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"><script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script><df-messenger  project-id="ваш-проект"  agent-id="длинный-id-вашего-агента"  language-code="ru">  <df-messenger-chat chat-title="Менеджер Legi"></df-messenger-chat></df-messenger>
+        <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"><script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script><df-messenger  project-id="ваш-проект"  agent-id="длинный-id-вашего-агента"  language-code="ru">  <df-messenger-chat chat-title="Менеджер Legi"></df-messenger-chat></df-messenger>
       </body>
     </html>
   );
