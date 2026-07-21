@@ -89,7 +89,7 @@ export const content = {
         aboveTier: "30 ცალი და მეტი",
       },
       rows: [
-        { name: "Grande — ნაცრისფერი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "14", priceSqm: "35", popular: false, swatch: "#b4b1a8" },
+        { name: "Grande — ნაცრისფერი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "17", priceSqm: "41", popular: false, swatch: "#b4b1a8" },
         { name: "Grande — კაპუჩინო", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
         { name: "Grande — ობსიდიანი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: false, swatch: "#3f3f42" },
       ],
@@ -203,7 +203,7 @@ export const content = {
         aboveTier: "30 pcs & up",
       },
       rows: [
-        { name: "Grande — Gray", size: "80×40 cm", thickness: "8 cm", pricePiece: "14", priceSqm: "35", popular: false, swatch: "#b4b1a8" },
+        { name: "Grande — Gray", size: "80×40 cm", thickness: "8 cm", pricePiece: "17", priceSqm: "41", popular: false, swatch: "#b4b1a8" },
         { name: "Grande — Cappuccino", size: "80×40 cm", thickness: "8 cm", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
         { name: "Grande — Obsidian", size: "80×40 cm", thickness: "8 cm", pricePiece: "24", priceSqm: "48", popular: false, swatch: "#3f3f42" },
       ],
