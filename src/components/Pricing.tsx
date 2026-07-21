@@ -25,14 +25,7 @@ export default function Pricing() {
                 <th className="px-6 py-4 font-semibold">{p.columns.product}</th>
                 <th className="px-6 py-4 font-semibold">{p.columns.size}</th>
                 <th className="px-6 py-4 font-semibold text-right">{p.columns.underTier}</th>
-                <th className="px-6 py-4 font-semibold text-right">
-                  <span className="flex flex-col items-end gap-1.5">
-                    <span className="whitespace-nowrap">{p.columns.aboveTier}</span>
-                    <span className="bg-red px-1.5 py-0.5 text-[0.6rem] font-bold tracking-normal normal-case text-white">
-                      {p.promoTag}
-                    </span>
-                  </span>
-                </th>
+                <th className="px-6 py-4 font-semibold text-right whitespace-nowrap">{p.columns.aboveTier}</th>
                 <th className="px-6 py-4" />
               </tr>
             </thead>
@@ -114,11 +107,8 @@ export default function Pricing() {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className="flex min-h-[1.5rem] flex-wrap items-start gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
+                  <div className="flex min-h-[1.5rem] items-start text-[0.7rem] font-semibold uppercase tracking-wide text-stone-500">
                     {p.columns.aboveTier}
-                    <span className="bg-red px-1.5 py-0.5 text-[0.55rem] font-bold normal-case tracking-normal text-white">
-                      {p.promoTag}
-                    </span>
                   </div>
                   <div className="mt-auto pt-1.5">
                     <span className="text-2xl font-extrabold text-ink">{r.priceSqm}</span>
