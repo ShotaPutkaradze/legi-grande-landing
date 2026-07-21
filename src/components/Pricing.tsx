@@ -1,7 +1,7 @@
 "use client";
 
 import { useLang } from "@/lib/language";
-import { IconArrow, IconCheck, IconClock } from "./icons";
+import { IconArrow, IconCheck } from "./icons";
 
 export default function Pricing() {
   const { t } = useLang();
@@ -15,15 +15,6 @@ export default function Pricing() {
           <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
             {p.title}
           </h2>
-        </div>
-
-        {/* Limited-time promotion banner */}
-        <div className="mt-6 flex items-center gap-3 bg-gradient-to-r from-red to-red-dark px-5 py-3.5 text-white shadow-lift ring-1 ring-red-dark/20 sm:gap-3.5">
-          <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-white animate-livePulse" aria-hidden />
-          <IconClock className="h-5 w-5 shrink-0" />
-          <p className="text-sm font-bold leading-snug tracking-tight sm:text-base">
-            {p.promoNote}
-          </p>
         </div>
 
         {/* Desktop table */}
