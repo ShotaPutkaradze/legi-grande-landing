@@ -4,6 +4,7 @@ import { Noto_Sans_Georgian, Oswald } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language";
 import PhoneTracker from "@/components/PhoneTracker";
+import ChatWidget from "@/components/ChatWidget";
 // Meta (Facebook) Pixel ID. Change here to point at a different pixel.
 const META_PIXEL_ID = "2195529237958457";
 const notoGeorgian = Noto_Sans_Georgian({
@@ -61,10 +62,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
 <html lang="ka" className={`${notoGeorgian.variable} ${oswald.variable} h-full antialiased`}>
-<head>
-        {/* 1. Стили виджета Dialogflow */}
-<link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css%22" />
-</head>
 <body className="min-h-full flex flex-col">
         {/* Meta Pixel */}
 <Script id="meta-pixel" strategy="afterInteractive">
@@ -93,42 +90,7 @@ fbq('track', 'PageView');`}
         <PhoneTracker />
 <LanguageProvider>{children}</LanguageProvider>
  
-        {/* 2. Скрипт виджета (strategy="lazyOnload" загрузит его после загрузки сайта, чтобы не тормозить скорость) */}
-<Script 
-          src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js" 
-          strategy="lazyOnload" 
-        />
-        {/* 3. Сам HTML код виджета и стили. 
-            Вставляем через dangerouslySetInnerHTML, чтобы TypeScript не ругался на кастомные теги <df-messenger> */}
-<div
-          dangerouslySetInnerHTML={{
-            __html: `
-<df-messenger
-                location="europe-west3"
-                project-id="gen-lang-client-0970961690"
-                agent-id="2d05dad3-48c1-41df-bfc3-6bb138b70b0e"
-                language-code="ru"
-                max-query-length="-1">
-<df-messenger-chat-bubble
-                  chat-title="AI დამხმარე">
-</df-messenger-chat-bubble>
-</df-messenger>
-<style>
-                df-messenger {
-                  z-index: 999;
-                  position: fixed;
-                  --df-messenger-font-color: #000;
-                  --df-messenger-font-family: var(--font-body), sans-serif;
-                  --df-messenger-chat-background: #f3f6fc;
-                  --df-messenger-message-user-background: #d3e3fd;
-                  --df-messenger-message-bot-background: #ffffff;
-                  bottom: 16px;
-                  right: 16px;
-                }
-</style>
-            `,
-          }}
-        />
+        <ChatWidget />
 </body>
 </html>
   );
