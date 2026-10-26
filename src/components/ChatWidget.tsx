@@ -27,6 +27,94 @@ function wasOpened() {
   }
 }
 
+const VISITED_KEY = "legi_visited";
+const UTM_KEY = "legi_utm";
+const UTM_FIELDS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "gclid",
+  "fbclid",
+] as const;
+
+type DfMessenger = HTMLElement & {
+  setQueryParameters?: (params: { parameters: Record<string, string> }) => void;
+};
+
+/**
+ * UTM tags from the landing URL. Saved for the session so they survive
+ * in-page navigation that drops the query string.
+ */
+function readUtm(): Record<string, string> {
+  const url = new URLSearchParams(window.location.search);
+  const fromUrl: Record<string, string> = {};
+  for (const key of UTM_FIELDS) {
+    const value = url.get(key);
+    if (value) fromUrl[key] = value;
+  }
+  try {
+    if (Object.keys(fromUrl).length) {
+      sessionStorage.setItem(UTM_KEY, JSON.stringify(fromUrl));
+      return fromUrl;
+    }
+    return JSON.parse(sessionStorage.getItem(UTM_KEY) ?? "{}");
+  } catch {
+    return fromUrl;
+  }
+}
+
+function checkReturning(): "yes" | "no" {
+  try {
+    const returning = localStorage.getItem(VISITED_KEY) ? "yes" : "no";
+    localStorage.setItem(VISITED_KEY, "true");
+    return returning;
+  } catch {
+    return "no";
+  }
+}
+
+async function readGeo() {
+  try {
+    const res = await fetch("/api/geo", { cache: "no-store" });
+    if (res.ok) return (await res.json()) as Record<string, string>;
+  } catch {}
+  return {};
+}
+
+/**
+ * Passes visitor context (UTM, returning visit, IP/city) into the Dialogflow
+ * CX session so the agent and its logs can see where the lead came from.
+ */
+async function enrichSession() {
+  const utm = readUtm();
+  const isReturning = checkReturning();
+  const [geo] = await Promise.all([
+    readGeo(),
+    customElements.whenDefined("df-messenger"),
+  ]);
+
+  const messenger = document.querySelector("df-messenger") as DfMessenger | null;
+  messenger?.setQueryParameters?.({
+    parameters: {
+      client_ip: geo.ip || "unknown",
+      client_city: geo.city || "unknown",
+      client_region: geo.region || "",
+      client_country: geo.country || "",
+      utm_source: utm.utm_source || "direct",
+      utm_medium: utm.utm_medium || "none",
+      utm_campaign: utm.utm_campaign || "none",
+      utm_term: utm.utm_term || "",
+      utm_content: utm.utm_content || "",
+      gclid: utm.gclid || "",
+      fbclid: utm.fbclid || "",
+      referrer: document.referrer || "direct",
+      is_returning: isReturning,
+    },
+  });
+}
+
 /**
  * LEGI-branded Dialogflow Messenger: graphite/terracotta theme, a pulsing ring
  * around the chat button and a "calculator" teaser that appears once per
@@ -35,6 +123,10 @@ function wasOpened() {
 export default function ChatWidget() {
   const [showTeaser, setShowTeaser] = useState(false);
   const [opened, setOpened] = useState(false);
+
+  useEffect(() => {
+    enrichSession();
+  }, []);
 
   useEffect(() => {
     if (wasOpened()) {
