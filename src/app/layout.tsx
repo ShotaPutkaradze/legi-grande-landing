@@ -25,7 +25,7 @@ const oswald = Oswald({
 });
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://legi-grande-landing.workers.dev",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://grande.legi.ge",
   ),
   title: META_TITLE,
   description: META_DESCRIPTION,
