@@ -3,6 +3,32 @@ export type Lang = "ka" | "en";
 export const PHONE = "+995 577 10 16 10";
 export const PHONE_HREF = "+995577101610";
 
+/**
+ * Grande colours and prices — the single place to change a price. Prices are
+ * in GEL incl. VAT: per piece under 30 pcs, per m² from 30 pcs.
+ */
+export const PRODUCTS = [
+  { name: { ka: "ნაცრისფერი", en: "Gray" }, pricePiece: 17, priceSqm: 41, popular: false, swatch: "#b4b1a8" },
+  { name: { ka: "კაპუჩინო", en: "Cappuccino" }, pricePiece: 24, priceSqm: 48, popular: true, swatch: "#977258" },
+  { name: { ka: "ობსიდიანი", en: "Obsidian" }, pricePiece: 24, priceSqm: 48, popular: false, swatch: "#3f3f42" },
+] as const;
+
+const SLAB_SIZE_CM = "80×40";
+const SLAB_THICKNESS_CM = 8;
+const CM = { ka: "სმ", en: "cm" } as const;
+
+function priceRows(lang: Lang) {
+  return PRODUCTS.map((p) => ({
+    name: `Grande — ${p.name[lang]}`,
+    size: `${SLAB_SIZE_CM} ${CM[lang]}`,
+    thickness: `${SLAB_THICKNESS_CM} ${CM[lang]}`,
+    pricePiece: String(p.pricePiece),
+    priceSqm: String(p.priceSqm),
+    popular: p.popular,
+    swatch: p.swatch,
+  }));
+}
+
 export const content = {
   ka: {
     htmlLang: "ka",
@@ -86,11 +112,7 @@ export const content = {
         underTier: "30 ცალამდე",
         aboveTier: "30 ცალი და მეტი",
       },
-      rows: [
-        { name: "Grande — ნაცრისფერი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "17", priceSqm: "41", popular: false, swatch: "#b4b1a8" },
-        { name: "Grande — კაპუჩინო", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
-        { name: "Grande — ობსიდიანი", size: "80×40 სმ", thickness: "8 სმ", pricePiece: "24", priceSqm: "48", popular: false, swatch: "#3f3f42" },
-      ],
+      rows: priceRows("ka"),
     },
     form: {
       eyebrow: "შეკვეთა",
@@ -198,11 +220,7 @@ export const content = {
         underTier: "Under 30 pcs",
         aboveTier: "30 pcs & up",
       },
-      rows: [
-        { name: "Grande — Gray", size: "80×40 cm", thickness: "8 cm", pricePiece: "17", priceSqm: "41", popular: false, swatch: "#b4b1a8" },
-        { name: "Grande — Cappuccino", size: "80×40 cm", thickness: "8 cm", pricePiece: "24", priceSqm: "48", popular: true, swatch: "#977258" },
-        { name: "Grande — Obsidian", size: "80×40 cm", thickness: "8 cm", pricePiece: "24", priceSqm: "48", popular: false, swatch: "#3f3f42" },
-      ],
+      rows: priceRows("en"),
     },
     form: {
       eyebrow: "Order",
