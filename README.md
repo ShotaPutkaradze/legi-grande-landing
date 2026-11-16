@@ -17,6 +17,17 @@ npm run dev       # http://localhost:3000 — Next dev server (fast iteration)
 npm run preview   # build with OpenNext + run on the Cloudflare Workers runtime locally
 ```
 
+## Checks
+
+```bash
+npm run lint
+npx tsc --noEmit
+npm test          # Vitest: /api/lead validation + Zoho forwarding, content consistency
+```
+
+GitHub Actions (`.github/workflows/ci.yml`) runs these plus `next build` on every
+push and pull request.
+
 ## Where to put the real content
 
 Everything below ships with polished **placeholders** — swap them for the real thing:

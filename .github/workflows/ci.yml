@@ -1,0 +1,26 @@
+name: CI
+
+# Runs on every push and pull request. Cloudflare deploys main on its own;
+# a red check here means the pushed commit should be fixed before relying on it.
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      # The postinstall safety net builds the Worker output; CI only needs `next build`.
+      SKIP_OPENNEXT_POSTINSTALL: "1"
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm test
+      - run: npm run build:next
