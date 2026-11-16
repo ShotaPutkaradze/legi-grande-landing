@@ -31,7 +31,6 @@ function priceRows(lang: Lang) {
 
 export const content = {
   ka: {
-    htmlLang: "ka",
     slogan: "ვქმნით ხარისხს!",
     nav: {
       product: "პროდუქტი",
@@ -56,12 +55,6 @@ export const content = {
         { value: "8 სმ", label: "სისქე / გამძლეობა" },
         { value: "100%", label: "ევროპული სტანდარტი" },
       ],
-    },
-    video: {
-      eyebrow: "ვიდეო პრეზენტაცია",
-      title: "Grande მოქმედებაში",
-      text: "უყურე როგორ ცვლის Grande სივრცეს — დაგებიდან საბოლოო შედეგამდე.",
-      replace: "ჩაანაცვლე ეს placeholder შენი YouTube/Vimeo ბმულით ან mp4 ფაილით.",
     },
     features: {
       eyebrow: "რატომ Grande",
@@ -124,7 +117,6 @@ export const content = {
       submitting: "იგზავნება...",
       success: "მადლობა! მალე დაგიკავშირდებით.",
       error: "დაფიქსირდა შეცდომა. გთხოვ სცადე თავიდან ან დაგვირეკე.",
-      required: "სავალდებულო ველი",
       privacy: "გაგზავნით თქვენ ეთანხმებით კონფიდენციალურობის პოლიტიკას.",
       callUs: "ან დაგვირეკე",
     },
@@ -139,7 +131,6 @@ export const content = {
   },
 
   en: {
-    htmlLang: "en",
     slogan: "We create quality!",
     nav: {
       product: "Product",
@@ -164,12 +155,6 @@ export const content = {
         { value: "8 cm", label: "thickness / durability" },
         { value: "100%", label: "European standard" },
       ],
-    },
-    video: {
-      eyebrow: "Video presentation",
-      title: "Grande in action",
-      text: "See how Grande transforms a space — from laying to the finished result.",
-      replace: "Replace this placeholder with your YouTube/Vimeo link or an mp4 file.",
     },
     features: {
       eyebrow: "Why Grande",
@@ -232,7 +217,6 @@ export const content = {
       submitting: "Sending...",
       success: "Thank you! We'll be in touch shortly.",
       error: "Something went wrong. Please try again or call us.",
-      required: "Required field",
       privacy: "By submitting you agree to the privacy policy.",
       callUs: "Or call us",
     },
