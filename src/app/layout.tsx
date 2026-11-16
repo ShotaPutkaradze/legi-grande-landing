@@ -4,7 +4,7 @@ import { Noto_Sans_Georgian, Oswald } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/language";
 import PhoneTracker from "@/components/PhoneTracker";
-import ChatWidget from "@/components/ChatWidget";
+import ChatWidget from "@/components/chat/ChatWidget";
 // Meta (Facebook) Pixel ID. Change here to point at a different pixel.
 const META_PIXEL_ID = "2195529237958457";
 // Search/social title and description (also used for Open Graph).

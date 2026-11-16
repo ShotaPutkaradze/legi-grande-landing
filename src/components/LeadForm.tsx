@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLang } from "@/lib/language";
 import { PHONE, PHONE_HREF } from "@/lib/content";
+import { trackPixel } from "@/lib/analytics";
 import { IconArrow, IconCheck, IconPhone } from "./icons";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -28,10 +29,7 @@ export default function LeadForm() {
       });
       if (!res.ok) throw new Error("request failed");
       // Meta Pixel: standard Lead conversion event for ad optimization.
-      (window as Window & { fbq?: (...args: unknown[]) => void }).fbq?.(
-        "track",
-        "Lead",
-      );
+      trackPixel("Lead");
       form.reset();
       setStatus("success");
     } catch {

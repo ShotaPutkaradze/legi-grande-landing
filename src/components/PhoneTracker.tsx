@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { trackPixel } from "@/lib/analytics";
 
 /**
  * Fires the Meta Pixel "Contact" event whenever a phone-number link is tapped
@@ -11,12 +12,7 @@ export default function PhoneTracker() {
   useEffect(() => {
     function onClick(e: MouseEvent) {
       const link = (e.target as HTMLElement | null)?.closest?.('a[href^="tel:"]');
-      if (link) {
-        (window as Window & { fbq?: (...args: unknown[]) => void }).fbq?.(
-          "track",
-          "Contact",
-        );
-      }
+      if (link) trackPixel("Contact");
     }
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);

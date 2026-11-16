@@ -2,6 +2,9 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { content, type Lang, type Content } from "./content";
+import { storageGet, storageSet } from "./storage";
+
+const LANG_KEY = "legi-lang";
 
 type Ctx = {
   lang: Lang;
@@ -19,7 +22,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     // Read the saved language after mount. Doing this in a lazy initializer
     // instead would cause an SSR/client hydration mismatch, so the post-mount
     // setState here is intentional.
-    const stored = window.localStorage.getItem("legi-lang") as Lang | null;
+    const stored = storageGet("local", LANG_KEY);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (stored === "ka" || stored === "en") setLangState(stored);
   }, []);
@@ -30,7 +33,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   const setLang = (l: Lang) => {
     setLangState(l);
-    window.localStorage.setItem("legi-lang", l);
+    storageSet("local", LANG_KEY, l);
   };
 
   const toggle = () => setLang(lang === "ka" ? "en" : "ka");
