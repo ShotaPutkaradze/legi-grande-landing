@@ -1,13 +1,15 @@
 # Grande — LEGI product landing page
 
 A single-page landing page for **Grande**, LEGI's large-format concrete paving slab.
-Built for a Facebook ad campaign: video showcase, feature highlights, photo gallery,
-price table, and a lead-capture form that sends each submission into Zoho CRM.
+Built for a Facebook ad campaign: feature highlights, photo gallery, price table,
+a lead-capture form that sends each submission into Zoho CRM, and an AI chat
+assistant (Dialogflow CX).
 
 - **Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS v4 · TypeScript
 - **Hosting:** Cloudflare Workers via [OpenNext](https://opennext.js.org/cloudflare) (`@opennextjs/cloudflare`)
 - **Languages:** Georgian (default) + English toggle in the header
 - **Leads:** posted to a same-origin `/api/lead` route that forwards into **Zoho CRM** (Web-to-Lead)
+- **Chat:** Dialogflow CX Messenger, LEGI-branded, with funnel telemetry
 
 ## Run locally
 
@@ -28,19 +30,18 @@ npm test          # Vitest: /api/lead validation + Zoho forwarding, content cons
 GitHub Actions (`.github/workflows/ci.yml`) runs these plus `next build` on every
 push and pull request.
 
-## Where to put the real content
-
-Everything below ships with polished **placeholders** — swap them for the real thing:
+## Where things live
 
 | What | File | How |
 |------|------|-----|
-| **Video** ⏳ | `src/components/VideoSection.tsx` | Still a placeholder. Set `VIDEO_EMBED_URL` to a YouTube/Vimeo *embed* URL (e.g. `https://www.youtube.com/embed/ID`). |
-| **Gallery photos** ✅ | `src/components/Gallery.tsx` | Real Grande photos in `public/gallery/`. Each `shots` item has `src`, bilingual `alt`, and `label`. |
-| **Hero photo** ✅ | `src/components/Hero.tsx` | `public/grande-pavers-gray-cappuccino-obsidian.webp` (all three colours). |
-| **Prices / colours** ✅ | `src/lib/content.ts` → `pricing.rows` | Real colours (Gray, Cappuccino, Obsidian) — Latin on the EN page, Georgian script on the KA page (გრეი / კაპუჩინო / ობსიდიანი). Edit name, size, thickness, price, `popular`. Swatch hexes in `Pricing.tsx`. |
+| **Gallery photos** | `src/components/Gallery.tsx` | Real Grande photos in `public/gallery/`. Each `shots` item has `src`, bilingual `alt`, and `label`. |
+| **Hero photo** | `src/components/Hero.tsx` | `public/grande-pavers-gray-cappuccino-obsidian.webp` (all three colours). |
+| **Prices / colours** | `src/lib/content.ts` → `PRODUCTS` | The single place to change a price, swatch colour, colour name (KA + EN) or the `popular` flag; both languages' price tables are built from it. The meta description in `src/app/layout.tsx` also quotes the 41–48 ₾/m² range — update it when prices change. |
 | **All copy / translations** | `src/lib/content.ts` | One file holds every Georgian + English string. |
 | **Phone number** | `src/lib/content.ts` → `PHONE` / `PHONE_HREF` | |
-| **Logo / favicon** ✅ | `public/legi-logo.webp`, `src/app/icon.svg` | Real Legi logo + brick favicon. |
+| **SEO title / description** | `src/app/layout.tsx` → `META_TITLE` / `META_DESCRIPTION` | Also used for Open Graph (Facebook previews). |
+| **Chat widget** | `src/lib/chat/config.ts`, `src/components/chat/` | Agent IDs, teaser timing, telemetry endpoint; texts in `ChatTeaser.tsx` / `ChatWidget.tsx`; colours in `chat.css`. |
+| **Logo / favicon** | `public/legi-logo.webp`, `src/app/icon.svg` | Real Legi logo + brick favicon. |
 
 ### Regenerating images from source
 
@@ -73,6 +74,12 @@ To repoint at a different Zoho org/form: regenerate the webform in
 
 - **Meta Pixel** — installed in `src/app/layout.tsx` (`META_PIXEL_ID`), fires
   `PageView` for the Facebook ad campaign. Change the ID there to repoint it.
+- **Chat funnel telemetry** — `src/lib/chat/telemetry.ts` posts `page_view`,
+  `chat_opened` and `message_sent` (with session id, IP, city, country) to the
+  `copilot-api` Cloud Function. `src/lib/chat/session.ts` also passes UTM tags,
+  referrer, returning-visitor flag and geo (from `/api/geo`, which uses
+  Cloudflare's own geolocation) into the Dialogflow session. The `ai_*` gtag
+  events only fire if Google Analytics is installed, which it currently is not.
 - **Visitor analytics** — none installed yet. Since the site runs on Cloudflare,
   enable **Cloudflare Web Analytics** (Dashboard → Analytics & Logs → Web Analytics):
   code-free if the domain is proxied through Cloudflare, otherwise drop the beacon
