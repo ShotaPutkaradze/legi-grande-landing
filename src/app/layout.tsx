@@ -7,6 +7,10 @@ import PhoneTracker from "@/components/PhoneTracker";
 import ChatWidget from "@/components/ChatWidget";
 // Meta (Facebook) Pixel ID. Change here to point at a different pixel.
 const META_PIXEL_ID = "2195529237958457";
+// Search/social title and description (also used for Open Graph).
+const META_TITLE = "ეზოს ბეტონის ფილები Grande 80×40 | დიდი ფორმატი | ლეგი";
+const META_DESCRIPTION =
+  "ეზოს ბეტონის ფილები Grande: დიდი ფორმატის ფილები 80×40×8 სმ, სამ ფერში. ლეგის ფილები ბილიკისა და ეზოსთვის, ფასი 41–48 ₾/მ².";
 const notoGeorgian = Noto_Sans_Georgian({
   variable: "--font-body",
   subsets: ["georgian", "latin"],
@@ -23,9 +27,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://legi-grande-landing.workers.dev",
   ),
-  title: "Grande — მსხვილფორმატიანი ბეტონის ფილა | LEGI",
-  description:
-    "Grande — დიდი ფორმატის ტროტუარის ფილა LEGI-სგან. ევროპული დიზაინი, ყინვაგამძლე, 8 სმ სისქე. მიიღე ფასი და კონსულტაცია.",
+  title: META_TITLE,
+  description: META_DESCRIPTION,
   keywords: [
     "ბეტონის ფილა",
     "ტროტუარის ფილა",
@@ -35,9 +38,8 @@ export const metadata: Metadata = {
     "paving slab Georgia",
   ],
   openGraph: {
-    title: "Grande — მსხვილფორმატიანი ბეტონის ფილა | LEGI",
-    description:
-      "დიდი ფორმატის ტროტუარის ფილა ევროპული სტანდარტით. ნახე ვიდეო, ფასები და მიიღე უფასო კონსულტაცია.",
+    title: META_TITLE,
+    description: META_DESCRIPTION,
     type: "website",
     locale: "ka_GE",
     siteName: "LEGI",
