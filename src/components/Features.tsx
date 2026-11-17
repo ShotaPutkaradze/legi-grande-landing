@@ -13,8 +13,8 @@ export default function Features() {
  <SectionHeading eyebrow={t.features.eyebrow} title={t.features.title} />
 
  <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
- {t.features.items.map((item, i) => {
- const Icon = featureIcons[i % featureIcons.length];
+ {t.features.items.map((item) => {
+ const Icon = featureIcons[item.icon];
  return (
  <div
  key={item.title}

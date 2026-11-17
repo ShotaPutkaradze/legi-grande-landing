@@ -63,26 +63,32 @@ export const content = {
         {
           title: "მსხვილი ფორმატი",
           text: "დიდი ზომის ფილა ნაკლები ნაკერით — სუფთა, თანამედროვე ვიზუალი ეზოსა და ტერასაზე.",
+          icon: "format",
         },
         {
           title: "ევროპული სტანდარტი",
           text: "წარმოებული ვიბროპრესის ტექნოლოგიით, EN 1338 სტანდარტის შესაბამისად.",
+          icon: "standard",
         },
         {
           title: "ყინვაგამძლე",
           text: "გათვლილია ქართულ კლიმატზე — გაყინვა-გალღობის ციკლებისადმი მდგრადი.",
+          icon: "frost",
         },
         {
           title: "მაღალი დატვირთვა",
           text: "8 სმ სისქე უძლებს როგორც ფეხით, ისე ავტომობილის დატვირთვას.",
+          icon: "load",
         },
         {
           title: "ფერის სტაბილურობა",
           text: "პიგმენტი მთელ მასაში — ფერი წლების შემდეგაც ინარჩუნებს სიღრმეს.",
+          icon: "color",
         },
         {
           title: "ჰარმონია ბუნებასთან",
           text: "შესანიშნავად ერწყმის გაზონს, ხეებსა და მწვანე გარემოს — ბეტონი ბუნებასთან ერთიანობაში.",
+          icon: "leaf",
         },
       ],
     },
@@ -119,6 +125,12 @@ export const content = {
       error: "დაფიქსირდა შეცდომა. გთხოვ სცადე თავიდან ან დაგვირეკე.",
       privacy: "გაგზავნით თქვენ ეთანხმებით კონფიდენციალურობის პოლიტიკას.",
       callUs: "ან დაგვირეკე",
+    },
+    ui: {
+      switchLanguage: "ენის შეცვლა",
+      menu: "მენიუ",
+      close: "დახურვა",
+      newRequest: "ახალი მოთხოვნა",
     },
     footer: {
       tagline: "ბეტონის ფილა და ბორდიური ევროპული სტანდარტით — 2010 წლიდან.",
@@ -163,26 +175,32 @@ export const content = {
         {
           title: "Large format",
           text: "Bigger slabs, fewer joints — a clean, contemporary look for yards and terraces.",
+          icon: "format",
         },
         {
           title: "European standard",
           text: "Produced with vibro-press technology in line with the EN 1338 standard.",
+          icon: "standard",
         },
         {
           title: "Frost resistant",
           text: "Engineered for the Georgian climate — resistant to freeze-thaw cycles.",
+          icon: "frost",
         },
         {
           title: "High load capacity",
           text: "8 cm thickness handles both foot traffic and vehicle loads.",
+          icon: "load",
         },
         {
           title: "Colour stability",
           text: "Pigment through the full body — colour keeps its depth for years.",
+          icon: "color",
         },
         {
           title: "Pairs with nature",
           text: "Looks stunning next to grass, trees and greenery — concrete in natural harmony.",
+          icon: "leaf",
         },
       ],
     },
@@ -219,6 +237,12 @@ export const content = {
       error: "Something went wrong. Please try again or call us.",
       privacy: "By submitting you agree to the privacy policy.",
       callUs: "Or call us",
+    },
+    ui: {
+      switchLanguage: "Switch language",
+      menu: "Menu",
+      close: "Close",
+      newRequest: "New request",
     },
     footer: {
       tagline: "Concrete paving and kerbs to European standard — since 2010.",

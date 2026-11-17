@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLang } from "@/lib/language";
 import { IconClose } from "./icons";
@@ -57,12 +57,25 @@ const shots: Shot[] = [
 export default function Gallery() {
   const { t, lang } = useLang();
   const [active, setActive] = useState<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const isOpen = active !== null;
 
+  // While the lightbox is open: Escape closes it, the page behind doesn't
+  // scroll, focus moves to the close button and returns to the photo after.
   useEffect(() => {
+    if (!isOpen) return;
+    const opener = document.activeElement as HTMLElement | null;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActive(null);
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = overflow;
+      opener?.focus();
+    };
+  }, [isOpen]);
 
   return (
     <section id="gallery" className="bg-white py-14 sm:py-20 lg:py-28 border-t border-stone-200">
@@ -99,12 +112,16 @@ export default function Gallery() {
 
       {active !== null && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={shots[active].label[lang]}
           className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/90 backdrop-blur-sm p-4"
           onClick={() => setActive(null)}
         >
           <button
+            ref={closeRef}
             className="absolute top-5 right-5 text-white/80 hover:text-white"
-            aria-label="Close"
+            aria-label={t.ui.close}
             onClick={() => setActive(null)}
           >
             <IconClose />

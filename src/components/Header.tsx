@@ -54,7 +54,7 @@ export default function Header() {
             <button
               onClick={toggle}
               className="border border-stone-300 px-3 py-1.5 text-xs font-bold text-stone-600 hover:border-red hover:text-red transition-colors"
-              aria-label="Switch language"
+              aria-label={t.ui.switchLanguage}
             >
               {lang === "ka" ? "EN" : "ქა"}
             </button>
@@ -74,7 +74,8 @@ export default function Header() {
             <button
               onClick={() => setOpen((v) => !v)}
               className="md:hidden ml-1 inline-flex h-9 w-9 items-center justify-center border border-stone-300"
-              aria-label="Menu"
+              aria-label={t.ui.menu}
+              aria-expanded={open}
             >
               <span className="flex flex-col gap-1">
                 <span className="block h-0.5 w-4 bg-ink" />

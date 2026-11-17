@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { useLang } from "@/lib/language";
 import { PHONE } from "@/lib/content";
 import { trackPixel } from "@/lib/analytics";
@@ -11,7 +11,7 @@ import SectionHeading from "./SectionHeading";
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function LeadForm() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const f = t.form;
   const [status, setStatus] = useState<Status>("idle");
 
@@ -73,7 +73,7 @@ export default function LeadForm() {
                   onClick={() => setStatus("idle")}
                   className="mt-6 text-sm font-semibold text-red hover:text-red-dark"
                 >
-                  {lang === "ka" ? "ახალი მოთხოვნა" : "New request"}
+                  {t.ui.newRequest}
                 </button>
               </div>
             ) : (
@@ -135,13 +135,15 @@ function Field({
   type?: string;
   required?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>) {
+  const id = useId();
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold text-stone-700">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-stone-700">
         {label}
         {required && <span className="text-red"> *</span>}
       </label>
       <input
+        id={id}
         name={name}
         type={type}
         required={required}
