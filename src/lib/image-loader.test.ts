@@ -13,7 +13,10 @@ describe("imageLoader", () => {
     expect(imageLoader({ src: HERO, width: 640 })).toBe(
       "/sized/grande-pavers-gray-cappuccino-obsidian-w640.webp",
     );
-    expect(imageLoader({ src: HERO, width: 828 })).toBe(
+    expect(imageLoader({ src: HERO, width: 750 })).toBe(
+      "/sized/grande-pavers-gray-cappuccino-obsidian-w828.webp",
+    );
+    expect(imageLoader({ src: HERO, width: 1080 })).toBe(
       "/sized/grande-pavers-gray-cappuccino-obsidian-w1080.webp",
     );
   });

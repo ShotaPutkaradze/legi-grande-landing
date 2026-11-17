@@ -21,7 +21,7 @@ const notoGeorgian = Noto_Sans_Georgian({
 const oswald = Oswald({
   variable: "--font-latin",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["700"],
   display: "swap",
 });
 export const metadata: Metadata = {

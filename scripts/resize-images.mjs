@@ -11,7 +11,7 @@ import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
-const WIDTHS = [640, 1080];
+const WIDTHS = [640, 828, 1080];
 const QUALITY = 78;
 const SOURCES = [
   "public/grande-pavers-gray-cappuccino-obsidian.webp",
