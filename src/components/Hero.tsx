@@ -27,9 +27,7 @@ export default function Hero() {
               {t.hero.title}
             </h1>
             <div className="red-rule mt-3 w-24 sm:w-28" />
-            <p className="mt-3 text-lg sm:text-2xl font-bold text-ink">
-              {t.hero.subtitle}
-            </p>
+            <p className="mt-3 text-lg sm:text-2xl font-bold text-ink">{t.hero.subtitle}</p>
             <p className="mt-2 max-w-md text-base sm:text-lg italic text-stone-500 leading-snug">
               {t.hero.tagline}
             </p>
@@ -63,7 +61,9 @@ export default function Hero() {
 
             {/* floating chip */}
             <div className="absolute -top-4 -right-2 sm:-right-4 rotate-3 bg-red px-4 py-3 shadow-lift">
-              <div className="text-[0.65rem] font-semibold uppercase tracking-wider text-white/80">EN 1338</div>
+              <div className="text-[0.65rem] font-semibold uppercase tracking-wider text-white/80">
+                EN 1338
+              </div>
               <div className="text-sm font-bold text-white">{t.hero.certified}</div>
             </div>
           </div>

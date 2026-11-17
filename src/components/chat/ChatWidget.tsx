@@ -12,13 +12,7 @@ import {
   TEASER_DELAY_MS,
   TEASER_SCROLL_PX,
 } from "@/lib/chat/config";
-import {
-  enrichSession,
-  expireOldChat,
-  markOpened,
-  readGeo,
-  wasOpened,
-} from "@/lib/chat/session";
+import { enrichSession, expireOldChat, markOpened, readGeo, wasOpened } from "@/lib/chat/session";
 import { trackFunnelEvent } from "@/lib/chat/telemetry";
 import ChatTeaser from "./ChatTeaser";
 import "./chat.css";
@@ -89,8 +83,7 @@ export default function ChatWidget() {
 
   function openChat() {
     const bubble = document.querySelector("df-messenger-chat-bubble") as
-      | (HTMLElement & { openChat?: () => void })
-      | null;
+      (HTMLElement & { openChat?: () => void }) | null;
     bubble?.openChat?.();
     setShowTeaser(false);
     markOpened();
@@ -103,9 +96,7 @@ export default function ChatWidget() {
 
       <div className="legi-chat-ring" aria-hidden="true" />
 
-      {showTeaser && (
-        <ChatTeaser onOpen={openChat} onClose={() => setShowTeaser(false)} />
-      )}
+      {showTeaser && <ChatTeaser onOpen={openChat} onClose={() => setShowTeaser(false)} />}
 
       {/* Custom elements go through innerHTML so TypeScript doesn't need JSX typings for them. */}
       <div

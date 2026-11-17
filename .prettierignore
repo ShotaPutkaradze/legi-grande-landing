@@ -1,0 +1,8 @@
+public/
+.open-next/
+.next/
+.wrangler/
+node_modules/
+package-lock.json
+src/lib/image-variants.json
+*.md

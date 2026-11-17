@@ -40,11 +40,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return { lang, setLang, toggle: () => setLang(lang === "ka" ? "en" : "ka"), t: content[lang] };
   }, [lang]);
 
-  return (
-    <LanguageContext.Provider value={value}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
 export function useLang() {

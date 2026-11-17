@@ -2,7 +2,8 @@
 :root {
   --legi-chat-graphite: #2c3e50;
   --legi-chat-bronze: #c28d5d;
-  --legi-chat-font: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --legi-chat-font:
+    var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 df-messenger {
@@ -38,9 +39,18 @@ df-messenger {
   animation: legi-glow 3s infinite;
 }
 @keyframes legi-glow {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(194, 141, 93, 0.6); }
-  70% { transform: scale(1.06); box-shadow: 0 0 0 16px rgba(194, 141, 93, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(194, 141, 93, 0); }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(194, 141, 93, 0.6);
+  }
+  70% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 16px rgba(194, 141, 93, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(194, 141, 93, 0);
+  }
 }
 
 .legi-chat-teaser {
@@ -57,14 +67,24 @@ df-messenger {
   font-size: 13.5px;
   line-height: 1.4;
   z-index: 999998;
-  transition: transform 0.2s ease, opacity 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.3s ease;
   animation: legi-slide-in 0.4s ease-out;
 }
 @keyframes legi-slide-in {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.legi-chat-teaser:hover { transform: translateY(-3px); }
+.legi-chat-teaser:hover {
+  transform: translateY(-3px);
+}
 
 .legi-chat-teaser-open {
   display: block;
@@ -113,9 +133,13 @@ df-messenger {
   padding: 2px 4px;
   cursor: pointer;
 }
-.legi-chat-teaser-close:hover { color: #e74c3c; }
+.legi-chat-teaser-close:hover {
+  color: #e74c3c;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .legi-chat-ring,
-  .legi-chat-teaser { animation: none; }
+  .legi-chat-teaser {
+    animation: none;
+  }
 }

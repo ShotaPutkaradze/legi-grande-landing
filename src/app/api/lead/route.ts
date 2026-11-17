@@ -17,8 +17,7 @@ export const runtime = "nodejs";
  * the webform and replace these.
  */
 const ZOHO_ACTION = "https://crm.zoho.eu/crm/WebToLeadForm";
-const ZOHO_XNQSJSDP =
-  "c3c7f77d840ef21ae52ae9af28f4eb1031aa66635c59d7d29e85ddd6f432fdc6";
+const ZOHO_XNQSJSDP = "c3c7f77d840ef21ae52ae9af28f4eb1031aa66635c59d7d29e85ddd6f432fdc6";
 const ZOHO_XMIWTLD =
   "1667cfad86d6d9b22743cca0386d89863a8dccf8e28da7bc3cea422f2f142fdf7c0962843a4bde6c2b3fb9957ddf9f63";
 
@@ -46,17 +45,11 @@ export async function POST(request: Request) {
   const name = String(body.name ?? "").trim();
   const phone = String(body.phone ?? "").trim();
   if (!name || !phone) {
-    return NextResponse.json(
-      { ok: false, error: "Name and phone are required." },
-      { status: 422 },
-    );
+    return NextResponse.json({ ok: false, error: "Name and phone are required." }, { status: 422 });
   }
   // Same rules as the form (lib/lead.ts), enforced again server-side.
   if (!isValidName(name) || !isValidPhone(phone)) {
-    return NextResponse.json(
-      { ok: false, error: "Invalid name or phone." },
-      { status: 422 },
-    );
+    return NextResponse.json({ ok: false, error: "Invalid name or phone." }, { status: 422 });
   }
 
   const params = new URLSearchParams({
@@ -82,8 +75,7 @@ export async function POST(request: Request) {
       signal: AbortSignal.timeout(ZOHO_TIMEOUT_MS),
     });
     const text = await res.text();
-    const accepted =
-      res.ok && /submitted successfully|Thank you for submitting/i.test(text);
+    const accepted = res.ok && /submitted successfully|Thank you for submitting/i.test(text);
 
     if (!accepted) {
       console.error("[lead] Zoho rejected:", res.status, text.slice(0, 300));

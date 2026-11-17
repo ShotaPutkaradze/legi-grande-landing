@@ -14,9 +14,27 @@ export const SOCIALS = [
  * in GEL incl. VAT: per piece under 30 pcs, per m² from 30 pcs.
  */
 export const PRODUCTS = [
-  { name: { ka: "ნაცრისფერი", en: "Gray" }, pricePiece: 17, priceSqm: 41, popular: false, swatch: "#b4b1a8" },
-  { name: { ka: "კაპუჩინო", en: "Cappuccino" }, pricePiece: 24, priceSqm: 48, popular: true, swatch: "#977258" },
-  { name: { ka: "ობსიდიანი", en: "Obsidian" }, pricePiece: 24, priceSqm: 48, popular: false, swatch: "#3f3f42" },
+  {
+    name: { ka: "ნაცრისფერი", en: "Gray" },
+    pricePiece: 17,
+    priceSqm: 41,
+    popular: false,
+    swatch: "#b4b1a8",
+  },
+  {
+    name: { ka: "კაპუჩინო", en: "Cappuccino" },
+    pricePiece: 24,
+    priceSqm: 48,
+    popular: true,
+    swatch: "#977258",
+  },
+  {
+    name: { ka: "ობსიდიანი", en: "Obsidian" },
+    pricePiece: 24,
+    priceSqm: 48,
+    popular: false,
+    swatch: "#3f3f42",
+  },
 ] as const;
 
 export const SLAB_SIZE_CM = "80×40";

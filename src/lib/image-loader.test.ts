@@ -27,10 +27,12 @@ describe("imageLoader", () => {
   });
 
   it("has every file listed in the manifest on disk", () => {
-    const missing = Object.entries(variants as Record<string, number[]>).flatMap(([src, widths]) => [
-      ...(existsSync(`public${src}`) ? [] : [`public${src}`]),
-      ...widths.map((w) => `public${variantUrl(src, w)}`).filter((f) => !existsSync(f)),
-    ]);
+    const missing = Object.entries(variants as Record<string, number[]>).flatMap(
+      ([src, widths]) => [
+        ...(existsSync(`public${src}`) ? [] : [`public${src}`]),
+        ...widths.map((w) => `public${variantUrl(src, w)}`).filter((f) => !existsSync(f)),
+      ],
+    );
     expect(missing).toEqual([]);
   });
 });

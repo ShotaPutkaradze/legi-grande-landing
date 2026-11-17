@@ -87,7 +87,13 @@ export default function LeadForm() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="grid gap-4">
-                <Field label={f.name} name="name" required maxLength={NAME_MAX} autoComplete="name" />
+                <Field
+                  label={f.name}
+                  name="name"
+                  required
+                  maxLength={NAME_MAX}
+                  autoComplete="name"
+                />
                 <Field
                   label={f.phone}
                   name="phone"
@@ -128,8 +134,7 @@ export default function LeadForm() {
                 )}
                 {status === "error" && (
                   <p role="alert" className="text-sm font-medium text-red-600">
-                    {f.error}{" "}
-                    <PhoneLink className="whitespace-nowrap font-bold underline" />
+                    {f.error} <PhoneLink className="whitespace-nowrap font-bold underline" />
                   </p>
                 )}
                 <p className="text-xs text-stone-400">{f.privacy}</p>

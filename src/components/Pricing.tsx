@@ -21,7 +21,9 @@ export default function Pricing() {
                 <th className="px-6 py-4 font-semibold">{p.columns.product}</th>
                 <th className="px-6 py-4 font-semibold">{p.columns.size}</th>
                 <th className="px-6 py-4 font-semibold text-right">{p.columns.underTier}</th>
-                <th className="px-6 py-4 font-semibold text-right whitespace-nowrap">{p.columns.aboveTier}</th>
+                <th className="px-6 py-4 font-semibold text-right whitespace-nowrap">
+                  {p.columns.aboveTier}
+                </th>
                 <th className="px-6 py-4" />
               </tr>
             </thead>
@@ -33,7 +35,9 @@ export default function Pricing() {
                       <Swatch color={r.swatch} className="h-7 w-7" />
                       <span className="font-semibold text-ink">{r.name}</span>
                       {r.popular && (
-                        <PopularBadge className="text-[0.65rem] tracking-wide">{p.popular}</PopularBadge>
+                        <PopularBadge className="text-[0.65rem] tracking-wide">
+                          {p.popular}
+                        </PopularBadge>
                       )}
                     </div>
                   </td>
@@ -119,7 +123,9 @@ export default function Pricing() {
 }
 
 function Swatch({ color, className }: { color: string; className: string }) {
-  return <span className={`${className} ring-1 ring-stone-300`} style={{ backgroundColor: color }} />;
+  return (
+    <span className={`${className} ring-1 ring-stone-300`} style={{ backgroundColor: color }} />
+  );
 }
 
 function PopularBadge({ className, children }: { className: string; children: React.ReactNode }) {

@@ -19,8 +19,7 @@ export default function ChatTeaser({
           LEGI Grande ექსპერტი
         </span>
         <span className="legi-chat-teaser-body">
-          დაგეხმარებით Grande 800×400 ფილის რაოდენობის, პალეტებისა და ფასის
-          დათვლაში!
+          დაგეხმარებით Grande 800×400 ფილის რაოდენობის, პალეტებისა და ფასის დათვლაში!
         </span>
       </button>
       <button
