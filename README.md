@@ -34,7 +34,7 @@ push and pull request.
 
 | What | File | How |
 |------|------|-----|
-| **Gallery photos** | `src/components/Gallery.tsx` | Real Grande photos in `public/gallery/`. Each `shots` item has `src`, bilingual `alt`, and `label`. |
+| **Gallery photos** | `src/components/Gallery.tsx` | Real Grande photos in `public/gallery/`. Each `shots` item has `src`, bilingual `alt`, and `label`. After adding or replacing any photo, run `npm run images` to regenerate the phone-sized copies in `public/sized/` (Cloudflare doesn't resize images on the fly). |
 | **Hero photo** | `src/components/Hero.tsx` | `public/grande-pavers-gray-cappuccino-obsidian.webp` (all three colours). |
 | **Prices / colours** | `src/lib/content.ts` → `PRODUCTS` | The single place to change a price, swatch colour, colour name (KA + EN) or the `popular` flag; both languages' price tables are built from it. The meta description in `src/app/layout.tsx` also quotes the 41–48 ₾/m² range — update it when prices change. |
 | **All copy / translations** | `src/lib/content.ts` | One file holds every Georgian + English string. |
