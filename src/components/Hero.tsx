@@ -10,22 +10,9 @@ export default function Hero() {
   return (
     <section id="top" className="relative bg-white text-ink overflow-hidden">
       {/* light grey grid texture */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-100"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(33,30,30,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(33,30,30,.035) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
+      <div className="hero-grid pointer-events-none absolute inset-0" />
       {/* soft red corner glow */}
-      <div
-        className="pointer-events-none absolute -top-24 -left-24 h-96 w-96"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(167,31,39,.08), transparent 70%)",
-        }}
-      />
+      <div className="hero-glow pointer-events-none absolute -top-24 -left-24 h-96 w-96" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 pt-24 pb-12 sm:pt-28 sm:pb-20 lg:pt-36 lg:pb-28">
         <div className="grid md:grid-cols-2 md:grid-rows-[auto_auto] gap-x-10 lg:gap-x-12 gap-y-6 md:gap-y-7 items-start">

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { content, type Lang, type Content } from "./content";
 import { storageGet, storageSet } from "./storage";
 
@@ -31,15 +31,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = (l: Lang) => {
-    setLangState(l);
-    storageSet("local", LANG_KEY, l);
-  };
-
-  const toggle = () => setLang(lang === "ka" ? "en" : "ka");
+  // Memoized so consumers only re-render when the language actually changes.
+  const value = useMemo<Ctx>(() => {
+    const setLang = (l: Lang) => {
+      setLangState(l);
+      storageSet("local", LANG_KEY, l);
+    };
+    return { lang, setLang, toggle: () => setLang(lang === "ka" ? "en" : "ka"), t: content[lang] };
+  }, [lang]);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggle, t: content[lang] }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

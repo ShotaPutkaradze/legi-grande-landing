@@ -1,14 +1,9 @@
 "use client";
 
 import { useLang } from "@/lib/language";
+import { SOCIALS } from "@/lib/content";
 import Logo from "./Logo";
 import PhoneLink from "./PhoneLink";
-
-const socials = [
-  { label: "Facebook", href: "https://facebook.com/legi.ge" },
-  { label: "Instagram", href: "https://instagram.com/legi.ge" },
-  { label: "YouTube", href: "https://youtube.com/@legi" },
-];
 
 export default function Footer() {
   const { t } = useLang();
@@ -40,7 +35,7 @@ export default function Footer() {
               {t.footer.follow}
             </h4>
             <ul className="mt-4 space-y-2 text-sm">
-              {socials.map((s) => (
+              {SOCIALS.map((s) => (
                 <li key={s.label}>
                   <a
                     href={s.href}

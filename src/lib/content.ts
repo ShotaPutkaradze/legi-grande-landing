@@ -3,6 +3,12 @@ export type Lang = "ka" | "en";
 export const PHONE = "+995 577 10 16 10";
 export const PHONE_HREF = "+995577101610";
 
+export const SOCIALS = [
+  { label: "Facebook", href: "https://facebook.com/legi.ge" },
+  { label: "Instagram", href: "https://instagram.com/legi.ge" },
+  { label: "YouTube", href: "https://youtube.com/@legi" },
+];
+
 /**
  * Grande colours and prices — the single place to change a price. Prices are
  * in GEL incl. VAT: per piece under 30 pcs, per m² from 30 pcs.

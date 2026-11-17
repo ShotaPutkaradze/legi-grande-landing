@@ -87,7 +87,7 @@ export default function Gallery() {
         <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[230px]">
           {shots.map((shot, i) => (
             <button
-              key={i}
+              key={shot.src}
               onClick={() => setActive(i)}
               className={`group relative overflow-hidden ring-1 ring-stone-200 ${
                 shot.tall ? "row-span-2" : ""

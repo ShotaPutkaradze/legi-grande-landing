@@ -78,6 +78,17 @@ body {
   transform: skewX(-18deg);
 }
 
+/* Hero background: light grey grid texture + soft red corner glow */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(33, 30, 30, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 30, 30, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.hero-glow {
+  background: radial-gradient(circle, rgba(167, 31, 39, 0.08), transparent 70%);
+}
+
 /* Diagonal red underline like the logo swoosh */
 .red-rule {
   height: 5px;
