@@ -41,14 +41,19 @@ social-share (Open Graph) image URL absolute.
 
 ## Editing the site
 
-A push to the connected branch auto-redeploys. Almost everything lives in one file:
+A push to the connected branch auto-redeploys. GitHub Actions (lint, format,
+types, tests, build) also runs on every push — it doesn't block the Cloudflare
+deploy, so check that it's green. Almost everything lives in one file:
 
 | What | Where |
 |------|-------|
-| All text (Georgian + English), prices, colours | `src/lib/content.ts` |
+| All text (Georgian + English) | `src/lib/content.ts` |
+| Prices, colours (also feed the SEO description) | `src/lib/content.ts` → `PRODUCTS` |
 | Phone number | `src/lib/content.ts` (`PHONE` / `PHONE_HREF`) |
-| Photos | `public/` and `public/gallery/` |
-| Lead form / Zoho wiring | `src/components/LeadForm.tsx`, `src/app/api/lead/route.ts` |
+| Photos | `public/` and `public/gallery/` — then run `npm run images` and commit `public/sized/` |
+| SEO title / description | `src/app/layout.tsx` (`META_TITLE` / `META_DESCRIPTION`) |
+| Chat widget | `src/lib/chat/config.ts`, `src/components/chat/` |
+| Lead form / Zoho wiring | `src/components/LeadForm.tsx`, `src/app/api/lead/route.ts`, rules in `src/lib/lead.ts` |
 
 ## Where leads go
 
@@ -69,7 +74,11 @@ module) server-side: `name → Last Name`, `phone → Mobile`, and
 ```bash
 npm install        # builds the Worker output once (safety net); skip with SKIP_OPENNEXT_POSTINSTALL=1
 npm run dev        # http://localhost:3000 — normal Next.js dev
+npm run preview    # OpenNext build + the real Workers runtime on http://localhost:8787
 npm run lint
+npm run format     # Prettier (CI runs format:check)
+npm test           # Vitest
+npm run images     # after adding/replacing a photo
 ```
 
 `npm run build` runs the full OpenNext build (what Cloudflare runs). For a plain
@@ -89,6 +98,10 @@ prevents this, but an explicit build command is the clean fix.
 which was not found`**
 A name mismatch — make sure `name` in `wrangler.jsonc` matches the Worker's name
 in Cloudflare.
+
+**Local build or `npm run dev`/`preview` fails with `spawn UNKNOWN` / `Permission denied` on `workerd.exe` (Windows)**
+Windows Smart App Control blocks Cloudflare's unsigned `workerd.exe`. It must be
+turned off for local `preview`; Cloudflare's own builds are unaffected.
 
 **A content change isn't showing up**
 Confirm the latest commit actually deployed (Workers → the project → latest
