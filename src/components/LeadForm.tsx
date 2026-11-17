@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { useLang } from "@/lib/language";
-import { PHONE, PHONE_HREF } from "@/lib/content";
+import { PHONE } from "@/lib/content";
 import { trackPixel } from "@/lib/analytics";
 import { IconArrow, IconCheck, IconPhone } from "./icons";
+import PhoneLink from "./PhoneLink";
+import SectionHeading from "./SectionHeading";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -45,17 +47,10 @@ export default function LeadForm() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: pitch + contact */}
-          <div>
-            <p className="eyebrow text-red">{f.eyebrow}</p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
-              {f.title}
-            </h2>
+          <SectionHeading eyebrow={f.eyebrow} title={f.title} className="">
             <p className="mt-4 max-w-md text-stone-600 leading-relaxed">{f.text}</p>
 
-            <a
-              href={`tel:${PHONE_HREF}`}
-              className="mt-8 inline-flex items-center gap-3 border border-stone-200 bg-white px-5 py-4 hover:border-red transition-colors"
-            >
+            <PhoneLink className="mt-8 inline-flex items-center gap-3 border border-stone-200 bg-white px-5 py-4 hover:border-red transition-colors">
               <span className="flex h-11 w-11 items-center justify-center bg-red text-white">
                 <IconPhone className="h-5 w-5" />
               </span>
@@ -63,8 +58,8 @@ export default function LeadForm() {
                 <span className="block text-xs text-stone-500">{f.callUs}</span>
                 <span className="block text-lg font-bold">{PHONE}</span>
               </span>
-            </a>
-          </div>
+            </PhoneLink>
+          </SectionHeading>
 
           {/* Right: form */}
           <div className="bg-white border border-stone-200 p-6 sm:p-8 text-ink shadow-soft">

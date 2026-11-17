@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLang } from "@/lib/language";
 import { IconClose } from "./icons";
+import SectionHeading from "./SectionHeading";
 
 type Shot = {
   src: string;
@@ -66,13 +67,9 @@ export default function Gallery() {
   return (
     <section id="gallery" className="bg-white py-14 sm:py-20 lg:py-28 border-t border-stone-200">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="max-w-2xl">
-          <p className="eyebrow text-red">{t.gallery.eyebrow}</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {t.gallery.title}
-          </h2>
+        <SectionHeading eyebrow={t.gallery.eyebrow} title={t.gallery.title}>
           <p className="mt-4 text-stone-500">{t.gallery.text}</p>
-        </div>
+        </SectionHeading>
 
         <div className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[230px]">
           {shots.map((shot, i) => (

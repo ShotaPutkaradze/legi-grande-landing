@@ -2,6 +2,7 @@
 
 import { useLang } from "@/lib/language";
 import { IconArrow, IconCheck } from "./icons";
+import SectionHeading from "./SectionHeading";
 
 export default function Pricing() {
   const { t } = useLang();
@@ -10,12 +11,7 @@ export default function Pricing() {
   return (
     <section id="pricing" className="bg-stone-50 py-14 sm:py-20 lg:py-28 border-y border-stone-200">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="max-w-2xl">
-          <p className="eyebrow text-red">{p.eyebrow}</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {p.title}
-          </h2>
-        </div>
+        <SectionHeading eyebrow={p.eyebrow} title={p.title} />
 
         {/* Desktop table */}
         <div className="mt-10 hidden md:block overflow-x-auto border border-stone-200">
@@ -34,15 +30,10 @@ export default function Pricing() {
                 <tr key={r.name} className={r.popular ? "bg-red/5" : "bg-white"}>
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-3">
-                      <span
-                        className="h-7 w-7 ring-1 ring-stone-300"
-                        style={{ backgroundColor: r.swatch }}
-                      />
+                      <Swatch color={r.swatch} className="h-7 w-7" />
                       <span className="font-semibold text-ink">{r.name}</span>
                       {r.popular && (
-                        <span className="bg-red px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white">
-                          {p.popular}
-                        </span>
+                        <PopularBadge className="text-[0.65rem] tracking-wide">{p.popular}</PopularBadge>
                       )}
                     </div>
                   </td>
@@ -50,12 +41,10 @@ export default function Pricing() {
                     {r.size} · {r.thickness}
                   </td>
                   <td className="px-6 py-5 text-right whitespace-nowrap">
-                    <span className="text-xl font-extrabold text-ink">{r.pricePiece}</span>
-                    <span className="ml-1 text-xs text-stone-500">{p.unitPiece}</span>
+                    <Price value={r.pricePiece} unit={p.unitPiece} className="text-xl" />
                   </td>
                   <td className="px-6 py-5 text-right whitespace-nowrap">
-                    <span className="text-xl font-extrabold text-ink">{r.priceSqm}</span>
-                    <span className="ml-1 text-xs text-stone-500">{p.unitSqm}</span>
+                    <Price value={r.priceSqm} unit={p.unitSqm} className="text-xl" />
                   </td>
                   <td className="px-6 py-5 text-right">
                     <a
@@ -82,15 +71,10 @@ export default function Pricing() {
               }`}
             >
               <div className="flex items-center gap-3">
-                <span
-                  className="h-8 w-8 ring-1 ring-stone-300"
-                  style={{ backgroundColor: r.swatch }}
-                />
+                <Swatch color={r.swatch} className="h-8 w-8" />
                 <span className="font-bold text-ink">{r.name}</span>
                 {r.popular && (
-                  <span className="ml-auto bg-red px-2.5 py-0.5 text-[0.6rem] font-bold uppercase text-white">
-                    {p.popular}
-                  </span>
+                  <PopularBadge className="ml-auto text-[0.6rem]">{p.popular}</PopularBadge>
                 )}
               </div>
               <div className="mt-2 text-sm text-stone-500">
@@ -102,8 +86,7 @@ export default function Pricing() {
                     {p.columns.underTier}
                   </div>
                   <div className="mt-auto pt-1.5">
-                    <span className="text-2xl font-extrabold text-ink">{r.pricePiece}</span>
-                    <span className="ml-1 text-xs text-stone-500">{p.unitPiece}</span>
+                    <Price value={r.pricePiece} unit={p.unitPiece} className="text-2xl" />
                   </div>
                 </div>
                 <div className="flex flex-col">
@@ -111,8 +94,7 @@ export default function Pricing() {
                     {p.columns.aboveTier}
                   </div>
                   <div className="mt-auto pt-1.5">
-                    <span className="text-2xl font-extrabold text-ink">{r.priceSqm}</span>
-                    <span className="ml-1 text-xs text-stone-500">{p.unitSqm}</span>
+                    <Price value={r.priceSqm} unit={p.unitSqm} className="text-2xl" />
                   </div>
                 </div>
               </div>
@@ -133,5 +115,26 @@ export default function Pricing() {
         </p>
       </div>
     </section>
+  );
+}
+
+function Swatch({ color, className }: { color: string; className: string }) {
+  return <span className={`${className} ring-1 ring-stone-300`} style={{ backgroundColor: color }} />;
+}
+
+function PopularBadge({ className, children }: { className: string; children: React.ReactNode }) {
+  return (
+    <span className={`${className} bg-red px-2.5 py-0.5 font-bold uppercase text-white`}>
+      {children}
+    </span>
+  );
+}
+
+function Price({ value, unit, className }: { value: string; unit: string; className: string }) {
+  return (
+    <>
+      <span className={`${className} font-extrabold text-ink`}>{value}</span>
+      <span className="ml-1 text-xs text-stone-500">{unit}</span>
+    </>
   );
 }

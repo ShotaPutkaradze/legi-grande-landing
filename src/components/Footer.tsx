@@ -1,8 +1,8 @@
 "use client";
 
 import { useLang } from "@/lib/language";
-import { PHONE, PHONE_HREF } from "@/lib/content";
-import { Logo } from "./Header";
+import Logo from "./Logo";
+import PhoneLink from "./PhoneLink";
 
 const socials = [
   { label: "Facebook", href: "https://facebook.com/legi.ge" },
@@ -21,12 +21,7 @@ export default function Footer() {
             <Logo />
             <p className="mt-3 brand-slant text-red">{t.slogan}</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed">{t.footer.tagline}</p>
-            <a
-              href={`tel:${PHONE_HREF}`}
-              className="mt-5 inline-block text-lg font-bold text-ink hover:text-red transition-colors"
-            >
-              {PHONE}
-            </a>
+            <PhoneLink className="mt-5 inline-block text-lg font-bold text-ink hover:text-red transition-colors" />
           </div>
 
           <div>

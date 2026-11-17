@@ -2,6 +2,7 @@
 
 import { useLang } from "@/lib/language";
 import { featureIcons } from "./icons";
+import SectionHeading from "./SectionHeading";
 
 export default function Features() {
  const { t } = useLang();
@@ -9,12 +10,7 @@ export default function Features() {
  return (
  <section id="product" className="bg-white py-14 sm:py-20 lg:py-28 border-y border-stone-200">
  <div className="mx-auto max-w-7xl px-5 sm:px-8">
- <div className="max-w-2xl">
- <p className="eyebrow text-red">{t.features.eyebrow}</p>
- <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
- {t.features.title}
- </h2>
- </div>
+ <SectionHeading eyebrow={t.features.eyebrow} title={t.features.title} />
 
  <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
  {t.features.items.map((item, i) => {

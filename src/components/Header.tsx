@@ -1,25 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { useLang } from "@/lib/language";
-import { PHONE, PHONE_HREF } from "@/lib/content";
+import { PHONE } from "@/lib/content";
 import { IconPhone } from "./icons";
-
-export function Logo({ className = "h-9" }: { className?: string }) {
-  return (
-    <a href="#top" className="flex items-center select-none" aria-label="Legi — ვქმნით ხარისხს">
-      <Image
-        src="/legi-logo.webp"
-        alt="Legi"
-        width={154}
-        height={40}
-        priority
-        className={`${className} w-auto`}
-      />
-    </a>
-  );
-}
+import Logo from "./Logo";
+import PhoneLink from "./PhoneLink";
 
 export default function Header() {
   const { t, lang, toggle } = useLang();
@@ -73,13 +59,10 @@ export default function Header() {
               {lang === "ka" ? "EN" : "ქა"}
             </button>
 
-            <a
-              href={`tel:${PHONE_HREF}`}
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-ink hover:text-red transition-colors"
-            >
+            <PhoneLink className="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-ink hover:text-red transition-colors">
               <IconPhone className="h-4 w-4 text-red" />
               <span className="hidden lg:inline">{PHONE}</span>
-            </a>
+            </PhoneLink>
 
             <a
               href="#contact"
@@ -116,9 +99,7 @@ export default function Header() {
                 {l.label}
               </a>
             ))}
-            <a href={`tel:${PHONE_HREF}`} className="py-2 text-base font-bold text-red">
-              {PHONE}
-            </a>
+            <PhoneLink className="py-2 text-base font-bold text-red" />
           </nav>
         </div>
       )}
