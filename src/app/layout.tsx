@@ -24,9 +24,7 @@ const oswald = Oswald({
   display: "swap",
 });
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://grande.legi.ge",
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://grande.legi.ge"),
   title: META_TITLE,
   description: META_DESCRIPTION,
   keywords: [
@@ -59,14 +57,12 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-<html lang="ka" className={`${notoGeorgian.variable} ${oswald.variable} h-full antialiased`}>
-<body className="min-h-full flex flex-col">
+    <html lang="ka" className={`${notoGeorgian.variable} ${oswald.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
         {/* Meta Pixel */}
-<Script id="meta-pixel" strategy="afterInteractive">
+        <Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -77,23 +73,23 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${META_PIXEL_ID}');
 fbq('track', 'PageView');`}
-</Script>
-<noscript>
+        </Script>
+        <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-<img
+          <img
             height="1"
             width="1"
             style={{ display: "none" }}
             src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
             alt=""
           />
-</noscript>
- 
+        </noscript>
+
         <PhoneTracker />
-<LanguageProvider>{children}</LanguageProvider>
- 
+        <LanguageProvider>{children}</LanguageProvider>
+
         <ChatWidget />
-</body>
-</html>
+      </body>
+    </html>
   );
 }
