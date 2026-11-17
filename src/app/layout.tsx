@@ -5,12 +5,13 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/language";
 import PhoneTracker from "@/components/PhoneTracker";
 import ChatWidget from "@/components/chat/ChatWidget";
+import { SLAB_SIZE_CM, SLAB_THICKNESS_CM, sqmPriceRange } from "@/lib/content";
 // Meta (Facebook) Pixel ID. Change here to point at a different pixel.
 const META_PIXEL_ID = "2195529237958457";
-// Search/social title and description (also used for Open Graph).
-const META_TITLE = "ეზოს ბეტონის ფილები Grande 80×40 | დიდი ფორმატი | ლეგი";
-const META_DESCRIPTION =
-  "ეზოს ბეტონის ფილები Grande: დიდი ფორმატის ფილები 80×40×8 სმ, სამ ფერში. ლეგის ფილები ბილიკისა და ეზოსთვის, ფასი 41–48 ₾/მ².";
+// Search/social title and description (also used for Open Graph). Size and
+// price range come from content.ts so they follow price changes automatically.
+const META_TITLE = `ეზოს ბეტონის ფილები Grande ${SLAB_SIZE_CM} | დიდი ფორმატი | ლეგი`;
+const META_DESCRIPTION = `ეზოს ბეტონის ფილები Grande: დიდი ფორმატის ფილები ${SLAB_SIZE_CM}×${SLAB_THICKNESS_CM} სმ, სამ ფერში. ლეგის ფილები ბილიკისა და ეზოსთვის, ფასი ${sqmPriceRange()} ₾/მ².`;
 const notoGeorgian = Noto_Sans_Georgian({
   variable: "--font-body",
   subsets: ["georgian", "latin"],

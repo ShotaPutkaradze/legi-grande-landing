@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { content, PRODUCTS } from "./content";
+import { content, PRODUCTS, sqmPriceRange } from "./content";
 
 /** Shape of a value with strings/numbers/booleans erased, so ka and en can be compared. */
 function shape(value: unknown): unknown {
@@ -44,5 +44,12 @@ describe("content", () => {
 
   it("has exactly one popular product", () => {
     expect(PRODUCTS.filter((p) => p.popular)).toHaveLength(1);
+  });
+});
+
+describe("sqmPriceRange", () => {
+  it("spans the cheapest to the most expensive per-m² price", () => {
+    const prices = PRODUCTS.map((p) => p.priceSqm);
+    expect(sqmPriceRange()).toBe(`${Math.min(...prices)}–${Math.max(...prices)}`);
   });
 });

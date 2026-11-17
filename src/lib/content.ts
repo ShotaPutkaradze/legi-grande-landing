@@ -13,8 +13,15 @@ export const PRODUCTS = [
   { name: { ka: "ობსიდიანი", en: "Obsidian" }, pricePiece: 24, priceSqm: 48, popular: false, swatch: "#3f3f42" },
 ] as const;
 
-const SLAB_SIZE_CM = "80×40";
-const SLAB_THICKNESS_CM = 8;
+export const SLAB_SIZE_CM = "80×40";
+export const SLAB_THICKNESS_CM = 8;
+
+/** Lowest–highest per-m² price, e.g. "41–48" — used in the SEO description. */
+export function sqmPriceRange() {
+  const prices = PRODUCTS.map((p) => p.priceSqm);
+  const [min, max] = [Math.min(...prices), Math.max(...prices)];
+  return min === max ? String(min) : `${min}–${max}`;
+}
 const CM = { ka: "სმ", en: "cm" } as const;
 
 function priceRows(lang: Lang) {

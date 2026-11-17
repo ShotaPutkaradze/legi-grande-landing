@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
 
 export default nextConfig;
 
-// Cloudflare (OpenNext) dev bindings — only active under `next dev`.
+// Cloudflare (OpenNext) dev bindings for `next dev`. Skipped for builds, where
+// it would start a local workerd process for nothing.
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-initOpenNextCloudflareForDev();
+if (process.env.NODE_ENV === "development") initOpenNextCloudflareForDev();
