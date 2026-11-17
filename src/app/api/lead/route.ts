@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isValidName, isValidPhone } from "@/lib/lead";
 
 export const runtime = "nodejs";
 
@@ -21,14 +22,7 @@ const ZOHO_XNQSJSDP =
 const ZOHO_XMIWTLD =
   "1667cfad86d6d9b22743cca0386d89863a8dccf8e28da7bc3cea422f2f142fdf7c0962843a4bde6c2b3fb9957ddf9f63";
 
-// Same limits as the form inputs (LeadForm.tsx), enforced again server-side.
-const NAME_MAX = 80;
-const PHONE_CHARS = /^[0-9 +()-]{6,30}$/;
 const ZOHO_TIMEOUT_MS = 10_000;
-
-function isValidPhone(phone: string) {
-  return PHONE_CHARS.test(phone) && phone.replace(/\D/g, "").length >= 6;
-}
 
 type LeadBody = {
   name?: string;
@@ -57,7 +51,8 @@ export async function POST(request: Request) {
       { status: 422 },
     );
   }
-  if (name.length > NAME_MAX || !isValidPhone(phone)) {
+  // Same rules as the form (lib/lead.ts), enforced again server-side.
+  if (!isValidName(name) || !isValidPhone(phone)) {
     return NextResponse.json(
       { ok: false, error: "Invalid name or phone." },
       { status: 422 },

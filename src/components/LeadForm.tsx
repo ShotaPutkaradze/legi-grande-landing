@@ -4,11 +4,12 @@ import { useId, useState } from "react";
 import { useLang } from "@/lib/language";
 import { PHONE } from "@/lib/content";
 import { trackPixel } from "@/lib/analytics";
+import { NAME_MAX, PHONE_MAX, PHONE_PATTERN, isValidPhone } from "@/lib/lead";
 import { IconArrow, IconCheck, IconPhone } from "./icons";
 import PhoneLink from "./PhoneLink";
 import SectionHeading from "./SectionHeading";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "invalid" | "error";
 
 export default function LeadForm() {
   const { t } = useLang();
@@ -21,6 +22,10 @@ export default function LeadForm() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
+    if (!isValidPhone(String(data.phone ?? "").trim())) {
+      setStatus("invalid");
+      return;
+    }
 
     setStatus("submitting");
     try {
@@ -29,6 +34,10 @@ export default function LeadForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (res.status === 422) {
+        setStatus("invalid");
+        return;
+      }
       if (!res.ok) throw new Error("request failed");
       // Meta Pixel: standard Lead conversion event for ad optimization.
       trackPixel("Lead");
@@ -78,13 +87,15 @@ export default function LeadForm() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="grid gap-4">
-                <Field label={f.name} name="name" required maxLength={80} autoComplete="name" />
+                <Field label={f.name} name="name" required maxLength={NAME_MAX} autoComplete="name" />
                 <Field
                   label={f.phone}
                   name="phone"
                   type="tel"
                   required
-                  maxLength={30}
+                  maxLength={PHONE_MAX}
+                  pattern={PHONE_PATTERN}
+                  inputMode="tel"
                   autoComplete="tel"
                   placeholder="5XX XX XX XX"
                 />
@@ -110,8 +121,16 @@ export default function LeadForm() {
                   )}
                 </button>
 
+                {status === "invalid" && (
+                  <p role="alert" className="text-sm font-medium text-red-600">
+                    {f.invalidPhone}
+                  </p>
+                )}
                 {status === "error" && (
-                  <p className="text-sm font-medium text-red-600">{f.error}</p>
+                  <p role="alert" className="text-sm font-medium text-red-600">
+                    {f.error}{" "}
+                    <PhoneLink className="whitespace-nowrap font-bold underline" />
+                  </p>
                 )}
                 <p className="text-xs text-stone-400">{f.privacy}</p>
               </form>
