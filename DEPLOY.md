@@ -52,7 +52,7 @@ deploy, so check that it's green. Almost everything lives in one file:
 | Phone number | `src/lib/content.ts` (`PHONE` / `PHONE_HREF`) |
 | Photos | `public/` and `public/gallery/` — then run `npm run images` and commit `public/sized/` |
 | SEO title / description | `src/app/layout.tsx` (`META_TITLE` / `META_DESCRIPTION`) |
-| Chat widget | `src/lib/chat/config.ts`, `src/components/chat/` |
+| Chat widget | `src/components/chat/ChatWidget.tsx` (the `data-*` attributes) |
 | Lead form / Zoho wiring | `src/components/LeadForm.tsx`, `src/app/api/lead/route.ts`, rules in `src/lib/lead.ts` |
 
 ## Where leads go

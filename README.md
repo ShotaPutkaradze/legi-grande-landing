@@ -3,13 +3,13 @@
 A single-page landing page for **Grande**, LEGI's large-format concrete paving slab.
 Built for a Facebook ad campaign: feature highlights, photo gallery, price table,
 a lead-capture form that sends each submission into Zoho CRM, and an AI chat
-assistant (Dialogflow CX).
+assistant (LEGI AI Core).
 
 - **Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS v4 · TypeScript
 - **Hosting:** Cloudflare Workers via [OpenNext](https://opennext.js.org/cloudflare) (`@opennextjs/cloudflare`)
 - **Languages:** Georgian (default) + English toggle in the header
 - **Leads:** posted to a same-origin `/api/lead` route that forwards into **Zoho CRM** (Web-to-Lead)
-- **Chat:** Dialogflow CX Messenger, LEGI-branded, with funnel telemetry
+- **Chat:** LEGI AI Core widget (one external script), LEGI-branded, with its own funnel telemetry
 
 ## Run locally
 
@@ -40,7 +40,7 @@ push and pull request.
 | **All copy / translations** | `src/lib/content.ts` | One file holds every Georgian + English string. |
 | **Phone number** | `src/lib/content.ts` → `PHONE` / `PHONE_HREF` | |
 | **SEO title / description** | `src/app/layout.tsx` → `META_TITLE` / `META_DESCRIPTION` | Also used for Open Graph (Facebook previews). |
-| **Chat widget** | `src/lib/chat/config.ts`, `src/components/chat/` | Agent IDs, teaser timing, telemetry endpoint; texts in `ChatTeaser.tsx` / `ChatWidget.tsx`; colours in `chat.css`. |
+| **Chat widget** | `src/components/chat/ChatWidget.tsx` | One `<Script>` tag for the LEGI AI Core widget. Its `data-*` attributes set the bot profile, title, teaser text and colours; the button, teaser, chat panel and telemetry all come from the script itself. |
 | **Logo / favicon** | `public/legi-logo.webp`, `src/app/icon.svg` | Real Legi logo + brick favicon. |
 
 ### Regenerating images from source
@@ -74,12 +74,11 @@ To repoint at a different Zoho org/form: regenerate the webform in
 
 - **Meta Pixel** — installed in `src/app/layout.tsx` (`META_PIXEL_ID`), fires
   `PageView` for the Facebook ad campaign. Change the ID there to repoint it.
-- **Chat funnel telemetry** — `src/lib/chat/telemetry.ts` posts `page_view`,
-  `chat_opened` and `message_sent` (with session id, IP, city, country) to the
-  `copilot-api` Cloud Function. `src/lib/chat/session.ts` also passes UTM tags,
-  referrer, returning-visitor flag and geo (from `/api/geo`, which uses
-  Cloudflare's own geolocation) into the Dialogflow session. The `ai_*` gtag
-  events only fire if Google Analytics is installed, which it currently is not.
+- **Chat funnel telemetry** — sent by the LEGI AI Core widget script, not by this
+  repo: it posts `page_view`, `chat_opened` and `message_sent` (with session id,
+  IP, city, country) to the `copilot-api` Cloud Function, and looks the visitor's
+  IP and city up itself through the third-party `ipwho.is` service. Its `ai_*`
+  gtag events only fire if Google Analytics is installed, which it currently is not.
 - **Visitor analytics** — none installed yet. Since the site runs on Cloudflare,
   enable **Cloudflare Web Analytics** (Dashboard → Analytics & Logs → Web Analytics):
   code-free if the domain is proxied through Cloudflare, otherwise drop the beacon

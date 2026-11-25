@@ -22,15 +22,3 @@ export function storageSet(which: Area, key: string, value: string) {
     area(which).setItem(key, value);
   } catch {}
 }
-
-/** Removes every key containing `fragment` from both storage areas. */
-export function storageRemoveMatching(fragment: string) {
-  for (const which of ["local", "session"] as const) {
-    try {
-      const storage = area(which);
-      Object.keys(storage)
-        .filter((key) => key.includes(fragment))
-        .forEach((key) => storage.removeItem(key));
-    } catch {}
-  }
-}

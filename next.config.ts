@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 // Baseline security headers. Deliberately no script/connect CSP: the page loads
-// Meta Pixel and the Dialogflow messenger from third-party origins, and a strict
+// Meta Pixel and the LEGI AI Core chat widget from other origins, and a strict
 // policy would need to track every host they use. `frame-ancestors` only stops
 // other sites from embedding this page (clickjacking).
 const securityHeaders = [
